@@ -190,9 +190,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerContext
   _inputActions: {fileID: -944628639613478452, guid: 14f627c98321c7c4f818214567506157, type: 3}
   _playerSpeed: 11
-  jumpForce: 7
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 4
+  _jumpForce: 9
+  _slideBoost: 2.5
+  _fallMultiplier: 3.15
+  _lowJumpMultiplier: 4
   _rotateSpeed_X: 60
   _rotateSpeed_Y: 65
   _cameraPoint: {fileID: 6205970114091066947}
