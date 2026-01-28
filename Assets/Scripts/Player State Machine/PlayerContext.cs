@@ -23,6 +23,7 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 4f;
+    private float _bonusSpeed;
     private bool _grounded; // TEMPORARY
 
     [Header("Sensitivity")]
@@ -32,6 +33,9 @@ public class PlayerContext : MonoBehaviour
     private float _pitch;
     private float minPitch = -80f;
     private float maxPitch = 80f;
+
+    [Header("Miscellaneous")]
+    [SerializeField] private GameObject _temporaryObject;
 
     private Rigidbody _rb;
     Vector2 _moveDir = Vector2.zero;
@@ -78,7 +82,12 @@ public class PlayerContext : MonoBehaviour
             Jump();
         }
 
+        if (_attackAction.WasPressedThisFrame())
+        {
+            GameObject temp = Instantiate(_temporaryObject);
 
+            temp.transform.position = this.transform.position;
+        }
     }
 
     private void FixedUpdate()
@@ -117,6 +126,7 @@ public class PlayerContext : MonoBehaviour
     {
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        _bonusSpeed += 2;
     }
 
     void MouseLook()
@@ -134,6 +144,12 @@ public class PlayerContext : MonoBehaviour
 
     // TEMPORARY GROUND COLLISION CHECKS
     private void OnCollisionEnter(Collision collision)
+    {
+        _bonusSpeed = 0;
+        _grounded = true;
+    }
+
+    private void OnCollisionStay(Collision collision)
     {
         _grounded = true;
     }
