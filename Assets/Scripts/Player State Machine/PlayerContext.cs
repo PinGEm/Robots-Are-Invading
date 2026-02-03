@@ -17,9 +17,12 @@ public class PlayerContext : MonoBehaviour
     private InputAction _attackAction;
     #endregion
 
-    private const float MAX_FALL_SPEED = 18;
+    private const float MAX_FALL_SPEED = 30;
     private const float JUMP_APEX_THRESHOLD = 0.185f; // temporary implementation if apex hanging
     private const float SPEED_BOOST_SLIDE_TIMER = 2f;
+
+    private const float GROUND_CHECK_RADII = 0.08f;
+    private const float GROUND_CHECK_ALLOWANCE = 0.325f;
 
     [Header("Movement Variables")]
     [SerializeField] private int _playerSpeed = 11;
@@ -30,17 +33,28 @@ public class PlayerContext : MonoBehaviour
     private bool _startApexTimer;
     private float _apexCounter;
     private float _bonusSpeed;
-    private bool _grounded; // TEMPORARY
 
     [Header("Sensitivity")]
-    [SerializeField] private float _rotateSpeed_X = 60f;
-    [SerializeField] private float _rotateSpeed_Y = 65f;
+    [SerializeField] private float _rotateSpeed_X = 0.4f;
+    [SerializeField] private float _rotateSpeed_Y = 0.5f;
     [SerializeField] Transform _cameraPoint;
+    private float _yaw;
     private float _pitch;
     private float minPitch = -80f;
     private float maxPitch = 80f;
 
     [Header("Miscellaneous")]
+    [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private GameObject _groundCheck;
+
+    private bool _onGround()
+    {
+        if(Physics.SphereCast(_groundCheck.transform.position, GROUND_CHECK_RADII, Vector3.down,
+            out RaycastHit _hit, GROUND_CHECK_ALLOWANCE, _groundLayer)) return Vector3.Angle(_hit.normal, Vector3.up) < 20f;
+
+        return false;
+    }
+
     [SerializeField] private GameObject _temporaryObject;
     private Rigidbody _rb;
     Vector2 _moveDir = Vector2.zero;
@@ -80,7 +94,7 @@ public class PlayerContext : MonoBehaviour
         _moveDir = _moveAction.ReadValue<Vector2>();
         _lookDir = _lookAction.ReadValue<Vector2>();
 
-        MouseLook();
+        UpdateYawPitch();
 
         if (_attackAction.WasPressedThisFrame())
         {
@@ -89,7 +103,7 @@ public class PlayerContext : MonoBehaviour
             temp.transform.position = this.transform.position;
         }
 
-        if (_jumpAction.WasPressedThisFrame() && _grounded) Jump();
+        if (_jumpAction.WasPressedThisFrame() && _onGround() ) Jump();
 
         if (_slideAction.WasPressedThisFrame()) Sliding();
         if (_slideAction.WasReleasedThisFrame()) CancelSlide();
@@ -99,17 +113,30 @@ public class PlayerContext : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 player_movement = (transform.forward * _moveDir.y + transform.right * _moveDir.x);
-
-
-        _bonusSpeed = Math.Clamp(_bonusSpeed, 0, 25);
-        player_movement *= _playerSpeed + _bonusSpeed;
-
+        ApplyMovement();
         ApplyBetterGravity();
-
-        _rb.linearVelocity = new Vector3(player_movement.x, _rb.linearVelocity.y, player_movement.z);
     }
 
+    private void LateUpdate()
+    {
+        // Update Mouse Movement
+        transform.localRotation = Quaternion.Euler(0f, _yaw, 0f);
+        _cameraPoint.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
+    }
+
+    void ApplyMovement()
+    {
+        float y = _rb.linearVelocity.y;
+        Vector3 player_movement = (transform.forward * _moveDir.y + transform.right * _moveDir.x);
+
+        _bonusSpeed = Math.Clamp(_bonusSpeed, 0, 25);
+        player_movement *= (_playerSpeed + _bonusSpeed);
+
+        Vector3 move = player_movement * Time.fixedDeltaTime;
+
+        _rb.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
+        //_rb.AddForce(player_movement * 2.5f, ForceMode.Force);
+    }
 
     void ApplyBetterGravity()
     {
@@ -141,17 +168,12 @@ public class PlayerContext : MonoBehaviour
         _bonusSpeed += 1;
     }
 
-    void MouseLook()
+    void UpdateYawPitch()
     {
-        // Yaw
-        float yaw = _lookDir.x * _rotateSpeed_X * Time.deltaTime;
-        transform.Rotate(0f, yaw, 0f);
-
-        // Pitch
-        _pitch -= _lookDir.y * _rotateSpeed_Y * Time.deltaTime;
+        // Set the yaw and pitch position
+        _yaw += _lookDir.x * _rotateSpeed_X;
+        _pitch -= _lookDir.y * _rotateSpeed_Y;
         _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-
-        _cameraPoint.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
     }
 
     void ResetApex()
@@ -179,17 +201,5 @@ public class PlayerContext : MonoBehaviour
         // yes another temporary function lol i dont want to exert that much brainpower at 3am
         yield return new WaitForSeconds(SPEED_BOOST_SLIDE_TIMER);
         _bonusSpeed -= _slideBoost;
-    }
-
-    // ---   TEMPORARY GROUND COLLISION CHECKS    --- \\
-    private void OnCollisionStay(Collision collision)
-    {
-        ResetApex();
-        _grounded = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        _grounded = false;
     }
 }

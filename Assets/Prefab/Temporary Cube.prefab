@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5446619699873862439}
   - component: {fileID: 4731672532364525171}
   - component: {fileID: 4350065231529036928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Temporary Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814986434516878722}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2f2a8b9790922a046bff8c14238a8a14, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
