@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,15 @@ public class PlayerContext : MonoBehaviour
     private InputAction _attackAction;
     #endregion
 
+
+    enum MovementStates 
+    {
+        Moving,
+        Dashing
+    }
+
+    private MovementStates _movementState;
+
     private const float MAX_FALL_SPEED = 30;
     private const float JUMP_APEX_THRESHOLD = 0.185f; // temporary implementation if apex hanging
     private const float SPEED_BOOST_SLIDE_TIMER = 2f;
@@ -27,12 +37,17 @@ public class PlayerContext : MonoBehaviour
     [Header("Movement Variables")]
     [SerializeField] private int _playerSpeed = 11;
     [SerializeField] private float _jumpForce = 7f;
+    [SerializeField] private float _dashForce = 18f;
+    [SerializeField] private float _dashTime = 0.175f;
     [SerializeField] private float _slideBoost = 2.65f;
     [SerializeField] private float _fallMultiplier = 2.5f;
     [SerializeField] private float _lowJumpMultiplier = 4f;
+    private float _dashAmplifier = 3f;
+    private bool _enableDash = true;
     private bool _startApexTimer;
     private float _apexCounter;
     private float _bonusSpeed;
+    private float _dashCounter;
 
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
@@ -55,10 +70,13 @@ public class PlayerContext : MonoBehaviour
         return false;
     }
 
+    [SerializeField] private CinemachineImpulseSource _impulseSource;
     [SerializeField] private GameObject _temporaryObject;
     private Rigidbody _rb;
     Vector2 _moveDir = Vector2.zero;
     Vector2 _lookDir = Vector2.zero;
+
+    private Vector2 _prevMoveDir = Vector2.zero;
 
 
     private void OnEnable()
@@ -81,6 +99,8 @@ public class PlayerContext : MonoBehaviour
         _dashAction = InputSystem.actions.FindAction("Dash");
         _slideAction = InputSystem.actions.FindAction("Slide");
         _attackAction = InputSystem.actions.FindAction("Attack");
+
+        _movementState = MovementStates.Moving;
     }
 
     void Start()
@@ -105,6 +125,8 @@ public class PlayerContext : MonoBehaviour
 
         if (_jumpAction.WasPressedThisFrame() && _onGround() ) Jump();
 
+        if (_dashAction.WasPressedThisFrame() && _enableDash) _movementState = MovementStates.Dashing;
+
         if (_slideAction.WasPressedThisFrame()) Sliding();
         if (_slideAction.WasReleasedThisFrame()) CancelSlide();
 
@@ -113,8 +135,17 @@ public class PlayerContext : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ApplyMovement();
-        ApplyBetterGravity();
+
+        switch (_movementState)
+        {
+            case MovementStates.Moving:
+                ApplyMovement();
+                ApplyBetterGravity();
+                break;
+            case MovementStates.Dashing:
+                Dashing();
+                break;
+        };
     }
 
     private void LateUpdate()
@@ -135,6 +166,7 @@ public class PlayerContext : MonoBehaviour
         Vector3 move = player_movement * Time.fixedDeltaTime;
 
         _rb.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
+        _prevMoveDir = new Vector2(_moveDir.x,_moveDir.y);
         //_rb.AddForce(player_movement * 2.5f, ForceMode.Force);
     }
 
@@ -160,8 +192,38 @@ public class PlayerContext : MonoBehaviour
         }
     }
 
+    void Dashing()
+    {
+        _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+
+        if (_dashCounter >= _dashTime)
+        {
+            _enableDash = true;
+            _dashCounter = 0;
+            _movementState = MovementStates.Moving;
+
+            return;
+        }
+
+        if (_enableDash)
+        {
+            _impulseSource.GenerateImpulse(2);
+            Vector3 forceDirection = transform.forward.normalized * (_dashForce * _dashAmplifier);
+
+            if(_prevMoveDir != Vector2.zero) forceDirection = (transform.forward.normalized * _prevMoveDir.y + transform.right.normalized * _prevMoveDir.x) * (_dashForce * _dashAmplifier);
+
+            Debug.Log(forceDirection);
+            _rb.AddForce(forceDirection, ForceMode.Impulse);
+        }
+
+        _dashCounter += Time.fixedDeltaTime;
+        _enableDash = false;
+    }
+
     void Jump()
     {
+        if (_movementState != MovementStates.Moving) return; // lol very efficient code !!! (on god i will implement an HSM soon)
+
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _startApexTimer = true;
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
@@ -185,6 +247,8 @@ public class PlayerContext : MonoBehaviour
 
     void Sliding()
     {
+        if (_movementState != MovementStates.Moving) return;
+
         _bonusSpeed += _slideBoost;
         StartCoroutine(SlideCooldown());
         this.transform.localScale = new Vector3(1, 0.5f, 1);
