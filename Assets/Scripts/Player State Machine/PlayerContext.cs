@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,6 +35,7 @@ public class PlayerContext : MonoBehaviour
     private const float GROUND_CHECK_RADII = 0.08f;
     private const float GROUND_CHECK_ALLOWANCE = 0.325f;
 
+    #region Variables
     [Header("Movement Variables")]
     [SerializeField] private int _playerSpeed = 11;
     [SerializeField] private float _jumpForce = 7f;
@@ -77,6 +79,7 @@ public class PlayerContext : MonoBehaviour
     Vector2 _lookDir = Vector2.zero;
 
     private Vector2 _prevMoveDir = Vector2.zero;
+    #endregion
 
 
     private void OnEnable()

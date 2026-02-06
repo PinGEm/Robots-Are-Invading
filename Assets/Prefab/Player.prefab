@@ -99,6 +99,7 @@ Transform:
   m_Children:
   - {fileID: 6205970114091066947}
   - {fileID: 4819789108555520101}
+  - {fileID: 672443862508666102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1768428463020288719
@@ -237,6 +238,37 @@ MonoBehaviour:
   _groundCheck: {fileID: 94714533274143935}
   _impulseSource: {fileID: 5376976828783885596}
   _temporaryObject: {fileID: 814986434516878722, guid: fa3de31b1d4024142b498f78d03bf870, type: 3}
+--- !u!1 &4220275054259703643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 672443862508666102}
+  m_Layer: 0
+  m_Name: GroundCheck (Sphere)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &672443862508666102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220275054259703643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3869290513766424620}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5151015054122555624
 GameObject:
   m_ObjectHideFlags: 0
