@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Melee",
+                    "type": "Button",
+                    "id": "4ad5bbb9-5281-4c56-8c4a-1e8d7a2db847",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -268,6 +277,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6795bde3-336c-4099-914d-2bd6f7f715b1",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Melee",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

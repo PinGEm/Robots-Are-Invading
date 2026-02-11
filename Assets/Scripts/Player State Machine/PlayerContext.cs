@@ -16,6 +16,7 @@ public class PlayerContext : MonoBehaviour
     private InputAction _dashAction;
     private InputAction _slideAction;
     private InputAction _attackAction;
+    private InputAction _meleeAction;
     #endregion
 
 
@@ -99,12 +100,15 @@ public class PlayerContext : MonoBehaviour
         _dashAction = InputSystem.actions.FindAction("Dash");
         _slideAction = InputSystem.actions.FindAction("Slide");
         _attackAction = InputSystem.actions.FindAction("Attack");
+        _meleeAction = InputSystem.actions.FindAction("Melee");
 
         _movementState = MovementStates.Moving;
     }
 
     void Start()
     {
+        SaveSystem.Instance.Load();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -122,6 +126,8 @@ public class PlayerContext : MonoBehaviour
 
             temp.transform.position = this.transform.position;
         }
+
+        if(_meleeAction.WasPressedThisFrame()) SaveDetails();
 
         if (_jumpAction.WasPressedThisFrame() && _onGround() ) Jump();
 
@@ -265,5 +271,13 @@ public class PlayerContext : MonoBehaviour
         // yes another temporary function lol i dont want to exert that much brainpower at 3am
         yield return new WaitForSeconds(SPEED_BOOST_SLIDE_TIMER);
         _bonusSpeed -= _slideBoost;
+    }
+
+    private void SaveDetails()
+    {
+        Debug.Log("Successfully saved!");
+        Debug.Log(this.transform.position);
+        Debug.Log(this.transform.rotation);
+        SaveSystem.Instance.Save(transform.position, transform.rotation);
     }
 }
