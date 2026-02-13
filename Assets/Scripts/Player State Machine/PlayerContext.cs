@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Data;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,12 +18,14 @@ public class PlayerContext : MonoBehaviour
     private InputAction _slideAction;
     private InputAction _attackAction;
     private InputAction _meleeAction;
+    private InputAction _pauseAction;
     #endregion
 
 
     enum MovementStates 
     {
         Moving,
+        Sliding,
         Dashing
     }
 
@@ -53,6 +56,8 @@ public class PlayerContext : MonoBehaviour
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
     [SerializeField] private float _rotateSpeed_Y = 0.5f;
+    [SerializeField] private ScoreUI _scoreUI;
+    [SerializeField] private PauseUI _pauseUI;
     [SerializeField] Transform _cameraPoint;
     private float _yaw;
     private float _pitch;
@@ -101,13 +106,17 @@ public class PlayerContext : MonoBehaviour
         _slideAction = InputSystem.actions.FindAction("Slide");
         _attackAction = InputSystem.actions.FindAction("Attack");
         _meleeAction = InputSystem.actions.FindAction("Melee");
+        _pauseAction = InputSystem.actions.FindAction("Pause");
 
         _movementState = MovementStates.Moving;
     }
 
     void Start()
     {
-        SaveSystem.Instance.Load();
+
+        // Loading Data
+        _yaw = _rb.rotation.eulerAngles.y;
+        _pitch = _rb.rotation.eulerAngles.x;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -135,6 +144,8 @@ public class PlayerContext : MonoBehaviour
 
         if (_slideAction.WasPressedThisFrame()) Sliding();
         if (_slideAction.WasReleasedThisFrame()) CancelSlide();
+
+        if (_pauseAction.WasPressedThisFrame()) _pauseUI.Pause();
 
         if (_startApexTimer) _apexCounter += Time.deltaTime;
     }
@@ -278,6 +289,6 @@ public class PlayerContext : MonoBehaviour
         Debug.Log("Successfully saved!");
         Debug.Log(this.transform.position);
         Debug.Log(this.transform.rotation);
-        SaveSystem.Instance.Save(transform.position, transform.rotation);
+        SaveSystem.Instance.Save(transform.position, transform.rotation, _scoreUI.GetScore());
     }
 }
