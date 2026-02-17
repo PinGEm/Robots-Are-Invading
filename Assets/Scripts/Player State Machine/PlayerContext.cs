@@ -107,8 +107,6 @@ public class PlayerContext : MonoBehaviour
 
     void Start()
     {
-        SaveSystem.Instance.Load();
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -127,7 +125,7 @@ public class PlayerContext : MonoBehaviour
             temp.transform.position = this.transform.position;
         }
 
-        if(_meleeAction.WasPressedThisFrame()) SaveDetails();
+        if (_meleeAction.WasPressedThisFrame()) Debug.Log("Melee!");
 
         if (_jumpAction.WasPressedThisFrame() && _onGround() ) Jump();
 
@@ -271,13 +269,5 @@ public class PlayerContext : MonoBehaviour
         // yes another temporary function lol i dont want to exert that much brainpower at 3am
         yield return new WaitForSeconds(SPEED_BOOST_SLIDE_TIMER);
         _bonusSpeed -= _slideBoost;
-    }
-
-    private void SaveDetails()
-    {
-        Debug.Log("Successfully saved!");
-        Debug.Log(this.transform.position);
-        Debug.Log(this.transform.rotation);
-        SaveSystem.Instance.Save(transform.position, transform.rotation);
     }
 }
