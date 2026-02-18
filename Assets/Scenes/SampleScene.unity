@@ -7133,6 +7133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerContext
   _inputActions: {fileID: -944628639613478452, guid: 14f627c98321c7c4f818214567506157, type: 3}
+  _playerMaxHP: 100
   _playerSpeed: 11
   _jumpForce: 10.65
   _dashForce: 18
@@ -8837,7 +8838,8 @@ PrefabInstance:
       propertyPath: Lens.FieldOfView
       value: 82
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8402477254011338138, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
