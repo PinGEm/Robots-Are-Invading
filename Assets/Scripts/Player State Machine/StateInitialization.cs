@@ -11,51 +11,51 @@ public class StateInitialization : MonoBehaviour
 
     public BaseState Alive()
     {
-        return new PlayerAliveState();
+        return new PlayerAliveState(_context, this);
     }
 
     public BaseState Death()
     {
-        return new PlayerDeathState();
+        return new PlayerDeathState(_context, this);
     }
 
     public BaseState Airborne()
     {
-        return new AirborneState();
+        return new AirborneState(_context, this);
     }
 
     public BaseState Falling()
     {
-        return new FallingState();
+        return new FallingState(_context, this);
     }
 
     public BaseState Jumping()
     {
-        return new JumpingState();
+        return new JumpingState(_context, this);
     }
 
     public BaseState Grounded()
     {
-        return new GroundedState();
+        return new GroundedState(_context, this);
     }
 
     public BaseState Moving()
     {
-        return new MovingState();
+        return new MovingState(_context, this);
     }
 
     public BaseState Idle()
     {
-        return new IdleState();
+        return new IdleState(_context, this);
     }
 
     public BaseState Sliding()
     {
-        return new SlidingState();
+        return new SlidingState(_context, this);
     }
 
     public BaseState Dashing()
     {
-        return new DashingState();
+        return new DashingState(_context, this);
     }
 }

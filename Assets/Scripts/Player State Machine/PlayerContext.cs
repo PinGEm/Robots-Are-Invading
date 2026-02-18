@@ -27,19 +27,19 @@ public class PlayerContext : MonoBehaviour
     private const float GROUND_CHECK_ALLOWANCE = 0.325f;
 
     [Header("Movement Variables")]
+    [SerializeField] private int _playerMaxHP = 100;
     [SerializeField] private int _playerSpeed = 11;
-    [SerializeField] private float _jumpForce = 7f;
+    [SerializeField] private float _jumpForce = 10.65f;
     [SerializeField] private float _dashForce = 18f;
     [SerializeField] private float _dashTime = 0.175f;
-    [SerializeField] private float _slideBoost = 2.65f;
-    [SerializeField] private float _fallMultiplier = 2.5f;
+    [SerializeField] private float _slideBoost = 2.5f;
+    [SerializeField] private float _fallMultiplier = 3.15f;
     [SerializeField] private float _lowJumpMultiplier = 4f;
-    private float _dashAmplifier = 3f;
+    private int _currentPlayerHP;
     private bool _enableDash = true;
     private bool _startApexTimer;
     private float _apexCounter;
     private float _bonusSpeed;
-    private float _dashCounter;
 
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
@@ -54,11 +54,6 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private GameObject _groundCheck;
 
-
-    // ****** STATE VARIABLES ******** //
-    BaseState _currentState;
-    StateInitialization _states;
-
     private bool _onGround()
     {
         if (Physics.SphereCast(_groundCheck.transform.position, GROUND_CHECK_RADII, Vector3.down,
@@ -67,13 +62,42 @@ public class PlayerContext : MonoBehaviour
         return false;
     }
 
+    private bool _isDead()
+    {
+        return _currentPlayerHP <= 0 ? true : false;
+    }
+
     [SerializeField] private CinemachineImpulseSource _impulseSource;
-    [SerializeField] private GameObject _temporaryObject;
     private Rigidbody _rb;
     Vector2 _moveDir = Vector2.zero;
     Vector2 _lookDir = Vector2.zero;
 
     private Vector2 _prevMoveDir = Vector2.zero;
+
+
+    // ****** STATE VARIABLES ******** //
+    BaseState _currentState;
+    StateInitialization _states;
+
+    #region GETTERS AND SETTERS
+    
+    // Components
+    public BaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+    public Rigidbody GetRigidbody { get { return _rb; } }
+    public CinemachineImpulseSource GetImpulseSource { get { return _impulseSource; } }
+
+    // Player Variables
+    public bool IsDead { get { return _isDead(); } }
+    public bool IsGrounded { get { return _onGround(); } }
+
+    // Dash Variables
+    public bool EnableDash { get { return _enableDash; } set { _enableDash = value; } }
+    public float GetDashTime { get { return _dashTime; } }
+    public float GetDashForce { get { return _dashForce; } }
+    public InputAction GetDashInput { get { return _dashAction; } }
+    public Vector2 GetPrevMoveDir { get { return _prevMoveDir; } }
+    
+    #endregion
 
 
     private void OnEnable()
@@ -108,6 +132,8 @@ public class PlayerContext : MonoBehaviour
 
     void Start()
     {
+        _currentPlayerHP = _playerMaxHP;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -117,13 +143,13 @@ public class PlayerContext : MonoBehaviour
         _moveDir = _moveAction.ReadValue<Vector2>();
         _lookDir = _lookAction.ReadValue<Vector2>();
 
+        _currentState.UpdateState();
+
         UpdateYawPitch();
 
         if (_attackAction.WasPressedThisFrame())
         {
-            GameObject temp = Instantiate(_temporaryObject);
-
-            temp.transform.position = this.transform.position;
+            Debug.Log("Attacked!");
         }
 
         if (_meleeAction.WasPressedThisFrame()) Debug.Log("Melee!");
@@ -136,6 +162,11 @@ public class PlayerContext : MonoBehaviour
         if (_slideAction.WasReleasedThisFrame()) Debug.Log("cancel sliding");
 
         if (_startApexTimer) _apexCounter += Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        _currentState.FixedUpdateState();
     }
 
     private void LateUpdate()

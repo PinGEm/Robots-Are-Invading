@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FallingState : BaseState
 {
+    public FallingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+
     public override void CheckSwitchState()
     {
         throw new System.NotImplementedException();

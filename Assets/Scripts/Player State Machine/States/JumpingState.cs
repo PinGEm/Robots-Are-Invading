@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class JumpingState : BaseState
 {
+    public JumpingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+
     public override void CheckSwitchState()
     {
         throw new System.NotImplementedException();
@@ -9,7 +11,7 @@ public class JumpingState : BaseState
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("I am jumping!");
     }
 
     public override void ExitState()

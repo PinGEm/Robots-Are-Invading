@@ -1,5 +1,19 @@
+using UnityEditor.SceneManagement;
+
 public abstract class BaseState
 {
+    protected PlayerContext _ctx;
+    protected StateInitialization _init;
+
+    protected BaseState _currentSubState;
+    protected BaseState _currentSuperState;
+
+    public BaseState(PlayerContext ctx, StateInitialization init)
+    {
+        _ctx = ctx;
+        _init = init;
+    }
+
     public abstract void EnterState();
 
     public abstract void UpdateState();
@@ -17,18 +31,23 @@ public abstract class BaseState
 
     }
 
-    void SwitchState()
+    protected void SwitchState(BaseState nextState)
     {
+        ExitState();
 
+        nextState.EnterState();
+
+        _ctx.CurrentState = nextState;
     }
 
-    void SetSuperState()
+    protected void SetSuperState(BaseState nextSuperState)
     {
-
+        _currentSuperState = nextSuperState;
     }
 
-    void SetSubState()
+    protected void SetSubState(BaseState nextSubState)
     {
-
+        _currentSubState = nextSubState;
+        nextSubState.SetSuperState(this);
     }
 }

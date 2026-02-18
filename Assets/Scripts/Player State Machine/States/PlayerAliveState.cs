@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class PlayerAliveState : BaseState
 {
+    public PlayerAliveState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        if (_ctx.IsDead)
+        {
+            SwitchState(_init.Death());
+        }
     }
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("I am currently alive!");
     }
 
     public override void ExitState()
@@ -24,11 +29,24 @@ public class PlayerAliveState : BaseState
 
     public override void InitializeSubState()
     {
-        throw new System.NotImplementedException();
+        if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
+        {
+            SetSubState(_init.Dashing());
+        }
+
+        if (_ctx.IsGrounded)
+        {
+            SetSubState(_init.Grounded());
+        }
+
+        if (!_ctx.IsGrounded)
+        {
+            SetSubState(_init.Airborne());
+        }
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        CheckSwitchState();
     }
 }

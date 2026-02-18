@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SlidingState : BaseState
 {
+    public SlidingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+
     public override void CheckSwitchState()
     {
         throw new System.NotImplementedException();

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AirborneState : BaseState
 {
+    public AirborneState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+
     public override void CheckSwitchState()
     {
         throw new System.NotImplementedException();
@@ -9,7 +11,7 @@ public class AirborneState : BaseState
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("I am airborne!");
     }
 
     public override void ExitState()
