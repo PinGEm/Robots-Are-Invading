@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AirborneState : BaseState
+public class SlidingState : BaseState
 {
     public override void CheckSwitchState()
     {

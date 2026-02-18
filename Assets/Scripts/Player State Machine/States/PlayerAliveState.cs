@@ -1,16 +1,34 @@
 using UnityEngine;
 
-public class PlayerAliveState : MonoBehaviour
+public class PlayerAliveState : BaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void CheckSwitchState()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void EnterState()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public override void ExitState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void FixedUpdateState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void InitializeSubState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void UpdateState()
+    {
+        throw new System.NotImplementedException();
     }
 }

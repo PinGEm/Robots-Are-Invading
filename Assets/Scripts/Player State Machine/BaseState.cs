@@ -1,16 +1,34 @@
-using UnityEngine;
-
-public class BaseState : MonoBehaviour
+public abstract class BaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public abstract void EnterState();
+
+    public abstract void UpdateState();
+
+    public abstract void FixedUpdateState();
+
+    public abstract void ExitState();
+
+    public abstract void CheckSwitchState();
+
+    public abstract void InitializeSubState();
+
+    void UpdateStates()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void SwitchState()
     {
-        
+
+    }
+
+    void SetSuperState()
+    {
+
+    }
+
+    void SetSubState()
+    {
+
     }
 }
