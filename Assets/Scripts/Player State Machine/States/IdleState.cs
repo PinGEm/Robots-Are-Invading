@@ -24,7 +24,7 @@ public class IdleState : BaseState
 
     public override void FixedUpdateState()
     {
-        
+        _ctx.GetRigidbody.linearVelocity = new Vector3(0, _ctx.GetRigidbody.linearVelocity.y, 0);
     }
 
     public override void InitializeSubState()
