@@ -2,11 +2,15 @@ using UnityEditor.SceneManagement;
 
 public abstract class BaseState
 {
+    protected bool _rootState = false;
+
     protected PlayerContext _ctx;
     protected StateInitialization _init;
 
     protected BaseState _currentSubState;
     protected BaseState _currentSuperState;
+
+
 
     public BaseState(PlayerContext ctx, StateInitialization init)
     {
@@ -26,9 +30,22 @@ public abstract class BaseState
 
     public abstract void InitializeSubState();
 
-    void UpdateStates()
+    public void UpdateStates()
     {
+        UpdateState();
+        if (_currentSubState != null)
+        {
+            _currentSubState.UpdateStates();
+        }
+    }
 
+    public void FixedUpdateStates()
+    {
+        FixedUpdateState();
+        if (_currentSubState != null)
+        {
+            _currentSubState.FixedUpdateStates();
+        }
     }
 
     protected void SwitchState(BaseState nextState)
@@ -37,7 +54,14 @@ public abstract class BaseState
 
         nextState.EnterState();
 
-        _ctx.CurrentState = nextState;
+        if (_rootState)
+        {
+            _ctx.CurrentState = nextState;
+        }
+        else if (_currentSuperState != null)
+        {
+            _currentSuperState.SetSubState(nextState);
+        }
     }
 
     protected void SetSuperState(BaseState nextSuperState)

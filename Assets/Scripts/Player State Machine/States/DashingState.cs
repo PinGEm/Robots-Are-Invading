@@ -13,12 +13,12 @@ public class DashingState : BaseState
         {
             if (_ctx.IsGrounded)
             {
-                SetSubState(_init.Grounded());
+                SwitchState(_init.Grounded());
             }
 
             if (!_ctx.IsGrounded)
             {
-                SetSubState(_init.Airborne());
+                SwitchState(_init.Airborne());
             }
         }
     }
@@ -32,6 +32,7 @@ public class DashingState : BaseState
     public override void ExitState()
     {
         Debug.Log("Exiting Dash State");
+        _ctx.GetRigidbody.linearVelocity = Vector3.zero;
     }
 
     public override void FixedUpdateState()
@@ -46,6 +47,7 @@ public class DashingState : BaseState
 
     public override void UpdateState()
     {
+        CheckSwitchState();
         _dashCounter += Time.deltaTime;
     }
 
@@ -54,7 +56,7 @@ public class DashingState : BaseState
         _ctx.GetImpulseSource.GenerateImpulse(2);
         Vector3 forceDirection = _ctx.transform.forward.normalized * (_ctx.GetDashForce * _dashAmplifier);
 
-        if (_ctx.GetPrevMoveDir != Vector2.zero) forceDirection = (_ctx.transform.forward.normalized * _ctx.GetPrevMoveDir.y + _ctx.transform.right.normalized * _ctx.GetPrevMoveDir.x) * (_ctx.GetDashForce * _dashAmplifier);
+        if (_ctx.PrevMoveDir != Vector2.zero) forceDirection = (_ctx.transform.forward.normalized * _ctx.PrevMoveDir.y + _ctx.transform.right.normalized * _ctx.PrevMoveDir.x) * (_ctx.GetDashForce * _dashAmplifier);
 
         Debug.Log(forceDirection);
         _ctx.GetRigidbody.AddForce(forceDirection, ForceMode.Impulse);

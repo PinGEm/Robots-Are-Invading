@@ -89,13 +89,24 @@ public class PlayerContext : MonoBehaviour
     // Player Variables
     public bool IsDead { get { return _isDead(); } }
     public bool IsGrounded { get { return _onGround(); } }
+    public float BonusSpeed { get { return _bonusSpeed; } set { _bonusSpeed = value; } }
 
     // Dash Variables
     public bool EnableDash { get { return _enableDash; } set { _enableDash = value; } }
     public float GetDashTime { get { return _dashTime; } }
     public float GetDashForce { get { return _dashForce; } }
     public InputAction GetDashInput { get { return _dashAction; } }
-    public Vector2 GetPrevMoveDir { get { return _prevMoveDir; } }
+    public Vector2 PrevMoveDir { get { return _prevMoveDir; } set { _prevMoveDir = value; } }
+
+    // Moving Variables
+    public Vector2 GetMoveDir { get { return _moveDir; } }
+    public int GetPlayerSpeed { get { return _playerSpeed; } }
+
+    // Jumping Variables
+    public InputAction GetJumpInput { get { return _jumpAction; } }
+    public float GetFallMultiplier { get { return _fallMultiplier; } }
+    public float GetLowJumpMultiplier { get { return _lowJumpMultiplier; } }
+    public float GetJumpForce { get { return _jumpForce; } }
     
     #endregion
 
@@ -114,11 +125,7 @@ public class PlayerContext : MonoBehaviour
     {
         // Initialize Components
         _rb = GetComponent<Rigidbody>();
-
-        // Setup Current State
-        _states = new StateInitialization(this);
-        _currentState = _states.Alive();
-        _currentState.EnterState();
+        _currentPlayerHP = _playerMaxHP;
 
         // Configure Inputs
         _moveAction = InputSystem.actions.FindAction("Move");
@@ -128,12 +135,15 @@ public class PlayerContext : MonoBehaviour
         _slideAction = InputSystem.actions.FindAction("Slide");
         _attackAction = InputSystem.actions.FindAction("Attack");
         _meleeAction = InputSystem.actions.FindAction("Melee");
+
+        // Setup Current State
+        _states = new StateInitialization(this);
+        _currentState = _states.Alive();
+        _currentState.EnterState();
     }
 
     void Start()
     {
-        _currentPlayerHP = _playerMaxHP;
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -143,7 +153,7 @@ public class PlayerContext : MonoBehaviour
         _moveDir = _moveAction.ReadValue<Vector2>();
         _lookDir = _lookAction.ReadValue<Vector2>();
 
-        _currentState.UpdateState();
+        _currentState.UpdateStates();
 
         UpdateYawPitch();
 
@@ -156,17 +166,15 @@ public class PlayerContext : MonoBehaviour
 
         if (_jumpAction.WasPressedThisFrame() && _onGround()) Debug.Log("jump!");
 
-        if (_dashAction.WasPressedThisFrame() && _enableDash) Debug.Log("dashing");
-
-        if (_slideAction.WasPressedThisFrame()) Debug.Log("start sliding");
-        if (_slideAction.WasReleasedThisFrame()) Debug.Log("cancel sliding");
+        if (_slideAction.WasPressedThisFrame()) Sliding();
+        if (_slideAction.WasReleasedThisFrame()) CancelSlide();
 
         if (_startApexTimer) _apexCounter += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        _currentState.FixedUpdateState();
+        _currentState.FixedUpdateStates();
     }
 
     private void LateUpdate()
@@ -182,5 +190,15 @@ public class PlayerContext : MonoBehaviour
         _yaw += _lookDir.x * _rotateSpeed_X;
         _pitch -= _lookDir.y * _rotateSpeed_Y;
         _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+    }
+
+    void Sliding()
+    {
+        this.transform.localScale = new Vector3(1, 0.5f, 1);
+    }
+
+    void CancelSlide()
+    {
+        this.transform.localScale = new Vector3(1, 1, 1);
     }
 }

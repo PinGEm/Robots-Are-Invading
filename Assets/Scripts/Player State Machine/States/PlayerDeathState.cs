@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class PlayerDeathState : BaseState
 {
-    public PlayerDeathState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+    public PlayerDeathState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) {
+        _rootState = true;
+        InitializeSubState();
+    }
 
     public override void CheckSwitchState()
     {

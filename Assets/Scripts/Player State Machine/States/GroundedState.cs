@@ -2,11 +2,26 @@ using UnityEngine;
 
 public class GroundedState : BaseState
 {
-    public GroundedState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+    public GroundedState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) {
+        InitializeSubState();
+    }
 
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
+        {
+            SwitchState(_init.Dashing());
+        }
+
+        if (_ctx.GetJumpInput.WasPressedThisFrame())
+        {
+            SwitchState(_init.Jumping());
+        }
+
+        if (!_ctx.IsGrounded)
+        {
+            SwitchState(_init.Airborne());
+        }
     }
 
     public override void EnterState()
@@ -16,21 +31,28 @@ public class GroundedState : BaseState
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("exiting grounded state");
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void InitializeSubState()
     {
-        throw new System.NotImplementedException();
+        if (_ctx.GetMoveDir != Vector2.zero)
+        {
+            SetSubState(_init.Moving());
+        }
+        else
+        {
+            SetSubState(_init.Idle());
+        }
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        CheckSwitchState();
     }
 }

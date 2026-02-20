@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MovingState : BaseState
@@ -6,7 +7,10 @@ public class MovingState : BaseState
 
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        if (_ctx.GetMoveDir == Vector2.zero)
+        {
+            SwitchState(_init.Idle());
+        }
     }
 
     public override void EnterState()
@@ -16,12 +20,14 @@ public class MovingState : BaseState
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        // Note: We can actually add deceleration and acceleration!
+        _ctx.GetRigidbody.linearVelocity = new Vector3(0, _ctx.GetRigidbody.linearVelocity.y, 0);
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
+        // movement logic here
+        ApplyMovement();
     }
 
     public override void InitializeSubState()
@@ -31,6 +37,21 @@ public class MovingState : BaseState
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        CheckSwitchState();
+    }
+
+    void ApplyMovement()
+    {
+        float y = _ctx.GetRigidbody.linearVelocity.y;
+        Vector3 player_movement = (_ctx.transform.forward * _ctx.GetMoveDir.y + _ctx.transform.right * _ctx.GetMoveDir.x);
+
+        _ctx.BonusSpeed = Math.Clamp(_ctx.BonusSpeed, 0, 25);
+        player_movement *= (_ctx.GetPlayerSpeed + _ctx.BonusSpeed);
+
+        Vector3 move = player_movement * Time.fixedDeltaTime;
+
+        _ctx.GetRigidbody.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
+        _ctx.PrevMoveDir = new Vector2(_ctx.GetMoveDir.x, _ctx.GetMoveDir.y);
+        //_rb.AddForce(player_movement * 2.5f, ForceMode.Force);
     }
 }

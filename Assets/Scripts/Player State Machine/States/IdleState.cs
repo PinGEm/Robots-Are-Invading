@@ -6,31 +6,34 @@ public class IdleState : BaseState
 
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        if (_ctx.GetMoveDir != Vector2.zero)
+        {
+            SwitchState(_init.Moving());
+        }
     }
 
     public override void EnterState()
     {
-        Debug.Log("I am idle!");
+        Debug.Log("Player is currently idle!");
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void InitializeSubState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        CheckSwitchState();
     }
 }
