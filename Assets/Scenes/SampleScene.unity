@@ -458,9 +458,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
-  field of view: 82
+  field of view: 85
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3693,11 +3693,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1581412653}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
---- !u!1 &604092768 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 94714533274143935, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
-  m_PrefabInstance: {fileID: 6382102551366715891}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &716367386
 Mesh:
   m_ObjectHideFlags: 0
@@ -6713,11 +6708,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!4 &1453860224 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6205970114091066947, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
-  m_PrefabInstance: {fileID: 6382102551366715891}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1476098541
 Mesh:
   m_ObjectHideFlags: 0
@@ -7071,40 +7061,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!1 &1702155601 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3318995488567909698, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
-  m_PrefabInstance: {fileID: 6382102551366715891}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1702155608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702155601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270da760162bf7148a18d3a307338c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerContext
-  _inputActions: {fileID: -944628639613478452, guid: 14f627c98321c7c4f818214567506157, type: 3}
-  _playerMaxHP: 100
-  _playerSpeed: 11
-  _jumpForce: 10.65
-  _dashForce: 18
-  _dashTime: 0.175
-  _slideBoost: 2.5
-  _fallMultiplier: 3.15
-  _lowJumpMultiplier: 4
-  _rotateSpeed_X: 0.4
-  _rotateSpeed_Y: 0.5
-  _cameraPoint: {fileID: 1453860224}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _groundCheck: {fileID: 604092768}
-  _impulseSource: {fileID: 2013132642}
 --- !u!1 &1727897478
 GameObject:
   m_ObjectHideFlags: 0
@@ -8723,17 +8679,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &2013132642 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5376976828783885596, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
-  m_PrefabInstance: {fileID: 6382102551366715891}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
 --- !u!1001 &6382102551366715891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8790,18 +8735,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7556918737705085222, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
-      propertyPath: Lens.FieldOfView
-      value: 82
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8402477254011338138, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3318995488567909698, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1702155608}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

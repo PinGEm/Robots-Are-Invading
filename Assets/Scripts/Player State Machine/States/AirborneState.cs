@@ -34,11 +34,23 @@ public class AirborneState : BaseState
         if (_ctx.GetRigidbody.linearVelocity.y < 0)
         {
             _ctx.GetRigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (_ctx.GetFallMultiplier - 1) * Time.fixedDeltaTime;
+
+            // Clamp Fall Speed
+            if (_ctx.GetRigidbody.linearVelocity.y < -_ctx.GetMaxFallSpeed)
+            {
+                _ctx.GetRigidbody.linearVelocity = new Vector3(_ctx.GetRigidbody.linearVelocity.x, -_ctx.GetMaxFallSpeed, 
+                    _ctx.GetRigidbody.linearVelocity.z);
+            }
         }
     }
 
     public override void InitializeSubState()
     {
+/*        if (_ctx.GetSlideInput.WasPressedThisFrame() && _ctx.GetMoveDir != Vector2.zero)
+        {
+            SetSubState(_init.Sliding());
+        }*/
+
         if (_ctx.GetMoveDir != Vector2.zero)
         {
             SetSubState(_init.Moving());

@@ -4,24 +4,46 @@ public class SlidingState : BaseState
 {
     public SlidingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
 
+    private float _downwardsForce = 0.1f;
+    private float _slideCounter;
+
     public override void CheckSwitchState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Checking switch states");
+        if (_ctx.GetSlideInput.WasReleasedThisFrame() || _slideCounter >= _ctx.GetSlideTime)
+        {
+            Debug.Log("Trying to switch states");
+            if (_ctx.GetMoveDir == Vector2.zero)
+            {
+                Debug.Log("SWITCHING TO IDLE");
+                SwitchState(_init.Idle());
+            }
+            else
+            {
+                Debug.Log("SWITCHING TO MOVING");
+                SwitchState(_init.Moving());
+            }
+        }
     }
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        _ctx.transform.localPosition = new Vector3(_ctx.transform.localPosition.x, _ctx.transform.localPosition.y - 0.5f, _ctx.transform.localPosition.z);
+        _ctx.transform.localScale = new Vector3(1, 0.5f, 1);
+        Debug.Log("currently in sliding state");
+
+        ApplySlideForce();
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("exiting sliding state");
+        _ctx.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void InitializeSubState()
@@ -31,6 +53,17 @@ public class SlidingState : BaseState
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        _slideCounter += Time.deltaTime;
+
+        CheckSwitchState();
+    }
+
+    void ApplySlideForce()
+    {
+        Debug.Log("Applying force");
+
+        _ctx.GetRigidbody.AddForce((_ctx.transform.forward.normalized * _ctx.PrevMoveDir.y + _ctx.transform.right.normalized *
+            _ctx.PrevMoveDir.x + (-_ctx.transform.up * _downwardsForce)) * ( (_ctx.GetPlayerSpeed + 
+            Mathf.Clamp(_ctx.BonusSpeed,_ctx.GetMinBonusSpeed,_ctx.GetMaxBonusSpeed) ) + _ctx.GetSlideBoost), ForceMode.Impulse);
     }
 }

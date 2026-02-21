@@ -10,6 +10,7 @@ public class IdleState : BaseState
         {
             SwitchState(_init.Moving());
         }
+
     }
 
     public override void EnterState()

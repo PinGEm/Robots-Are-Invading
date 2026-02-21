@@ -11,6 +11,10 @@ public class MovingState : BaseState
         {
             SwitchState(_init.Idle());
         }
+        else if (_ctx.GetSlideInput.WasPressedThisFrame())
+        {
+            SwitchState(_init.Sliding());
+        }
     }
 
     public override void EnterState()
@@ -45,7 +49,7 @@ public class MovingState : BaseState
         float y = _ctx.GetRigidbody.linearVelocity.y;
         Vector3 player_movement = (_ctx.transform.forward * _ctx.GetMoveDir.y + _ctx.transform.right * _ctx.GetMoveDir.x);
 
-        _ctx.BonusSpeed = Math.Clamp(_ctx.BonusSpeed, 0, 25);
+        _ctx.BonusSpeed = Math.Clamp(_ctx.BonusSpeed, _ctx.GetMinBonusSpeed, _ctx.GetMaxBonusSpeed);
         player_movement *= (_ctx.GetPlayerSpeed + _ctx.BonusSpeed);
 
         Vector3 move = player_movement * Time.fixedDeltaTime;

@@ -46,6 +46,11 @@ public class JumpingState : BaseState
 
     public override void InitializeSubState()
     {
+        if (_ctx.GetSlideInput.WasPressedThisFrame() && _ctx.GetMoveDir != Vector2.zero)
+        {
+            SetSubState(_init.Sliding());
+        }
+
         if (_ctx.GetMoveDir != Vector2.zero)
         {
             SetSubState(_init.Moving());

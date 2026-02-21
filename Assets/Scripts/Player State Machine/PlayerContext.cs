@@ -23,6 +23,9 @@ public class PlayerContext : MonoBehaviour
     private const float JUMP_APEX_THRESHOLD = 0.185f; // temporary implementation if apex hanging
     private const float SPEED_BOOST_SLIDE_TIMER = 2f;
 
+    private const float MAX_BONUS_SPEED = 25;
+    private const float MIN_BONUS_SPEED = 0;
+
     private const float GROUND_CHECK_RADII = 0.08f;
     private const float GROUND_CHECK_ALLOWANCE = 0.325f;
 
@@ -33,6 +36,7 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private float _dashForce = 18f;
     [SerializeField] private float _dashTime = 0.175f;
     [SerializeField] private float _slideBoost = 2.5f;
+    [SerializeField] private float _slideTime = 0.5f;
     [SerializeField] private float _fallMultiplier = 3.15f;
     [SerializeField] private float _lowJumpMultiplier = 4f;
     private int _currentPlayerHP;
@@ -80,7 +84,7 @@ public class PlayerContext : MonoBehaviour
     StateInitialization _states;
 
     #region GETTERS AND SETTERS
-    
+
     // Components
     public BaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public Rigidbody GetRigidbody { get { return _rb; } }
@@ -90,6 +94,9 @@ public class PlayerContext : MonoBehaviour
     public bool IsDead { get { return _isDead(); } }
     public bool IsGrounded { get { return _onGround(); } }
     public float BonusSpeed { get { return _bonusSpeed; } set { _bonusSpeed = value; } }
+    public float GetMaxFallSpeed { get { return MAX_FALL_SPEED; } }
+    public float GetMaxBonusSpeed { get { return MAX_BONUS_SPEED; } }
+    public float GetMinBonusSpeed { get { return MIN_BONUS_SPEED; } } // here for verbose purposes and cleaner code
 
     // Dash Variables
     public bool EnableDash { get { return _enableDash; } set { _enableDash = value; } }
@@ -107,6 +114,11 @@ public class PlayerContext : MonoBehaviour
     public float GetFallMultiplier { get { return _fallMultiplier; } }
     public float GetLowJumpMultiplier { get { return _lowJumpMultiplier; } }
     public float GetJumpForce { get { return _jumpForce; } }
+
+    // Sliding Variables
+    public InputAction GetSlideInput { get { return _slideAction; } }
+    public float GetSlideTime { get { return _slideTime; } }
+    public float GetSlideBoost { get { return _slideBoost; } }
     
     #endregion
 
@@ -159,15 +171,10 @@ public class PlayerContext : MonoBehaviour
 
         if (_attackAction.WasPressedThisFrame())
         {
-            Debug.Log("Attacked!");
+            Debug.Log("Shoot!");
         }
 
         if (_meleeAction.WasPressedThisFrame()) Debug.Log("Melee!");
-
-        if (_jumpAction.WasPressedThisFrame() && _onGround()) Debug.Log("jump!");
-
-        if (_slideAction.WasPressedThisFrame()) Sliding();
-        if (_slideAction.WasReleasedThisFrame()) CancelSlide();
 
         if (_startApexTimer) _apexCounter += Time.deltaTime;
     }
@@ -190,15 +197,5 @@ public class PlayerContext : MonoBehaviour
         _yaw += _lookDir.x * _rotateSpeed_X;
         _pitch -= _lookDir.y * _rotateSpeed_Y;
         _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-    }
-
-    void Sliding()
-    {
-        this.transform.localScale = new Vector3(1, 0.5f, 1);
-    }
-
-    void CancelSlide()
-    {
-        this.transform.localScale = new Vector3(1, 1, 1);
     }
 }

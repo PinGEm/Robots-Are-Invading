@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7732245068092140009}
   - component: {fileID: 6548395984804978485}
   - component: {fileID: 1309664129178326427}
-  - component: {fileID: 8402477254011338138}
+  - component: {fileID: 5283526031268435122}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -208,7 +208,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &8402477254011338138
+--- !u!114 &5283526031268435122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,26 +217,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 3318995488567909698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cdb0bebab9c6e44aae4e9279b0bf043, type: 3}
+  m_Script: {fileID: 11500000, guid: 270da760162bf7148a18d3a307338c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerContext
   _inputActions: {fileID: -944628639613478452, guid: 14f627c98321c7c4f818214567506157, type: 3}
+  _playerMaxHP: 100
   _playerSpeed: 11
   _jumpForce: 10.65
-  _dashForce: 18
+  _dashForce: 21
   _dashTime: 0.175
-  _slideBoost: 2.5
+  _slideBoost: 25
+  _slideTime: 0.2
   _fallMultiplier: 3.15
   _lowJumpMultiplier: 4
-  _rotateSpeed_X: 0.2
-  _rotateSpeed_Y: 0.3
+  _rotateSpeed_X: 0.3
+  _rotateSpeed_Y: 0.4
   _cameraPoint: {fileID: 6205970114091066947}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
   _groundCheck: {fileID: 94714533274143935}
   _impulseSource: {fileID: 5376976828783885596}
-  _temporaryObject: {fileID: 814986434516878722, guid: fa3de31b1d4024142b498f78d03bf870, type: 3}
 --- !u!1 &5151015054122555624
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,9 +297,9 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 75
+    FieldOfView: 85
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.2
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
