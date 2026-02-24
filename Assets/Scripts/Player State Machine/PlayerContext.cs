@@ -45,6 +45,9 @@ public class PlayerContext : MonoBehaviour
     private float _apexCounter;
     private float _bonusSpeed;
 
+    [Header("Miscellaneous")]
+    [SerializeField] private BaseWeapon _currentWeapon;
+
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
     [SerializeField] private float _rotateSpeed_Y = 0.5f;
@@ -119,9 +122,8 @@ public class PlayerContext : MonoBehaviour
     public InputAction GetSlideInput { get { return _slideAction; } }
     public float GetSlideTime { get { return _slideTime; } }
     public float GetSlideBoost { get { return _slideBoost; } }
-    
-    #endregion
 
+    #endregion
 
     private void OnEnable()
     {
@@ -171,24 +173,23 @@ public class PlayerContext : MonoBehaviour
 
         if (_attackAction.WasPressedThisFrame())
         {
-            Debug.Log("Shoot!");
+            if (_currentWeapon != null)
+            {
+                _currentWeapon.ExecuteShot(_cameraPoint.transform.position);
+            }
         }
 
         if (_meleeAction.WasPressedThisFrame()) Debug.Log("Melee!");
 
         if (_startApexTimer) _apexCounter += Time.deltaTime;
+
+        transform.localRotation = Quaternion.Euler(0f, _yaw, 0f);
+        _cameraPoint.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
     }
 
     private void FixedUpdate()
     {
         _currentState.FixedUpdateStates();
-    }
-
-    private void LateUpdate()
-    {
-        // Update Mouse Movement
-        transform.localRotation = Quaternion.Euler(0f, _yaw, 0f);
-        _cameraPoint.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
     }
 
     void UpdateYawPitch()

@@ -1,9 +1,14 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MovingState : BaseState
 {
     public MovingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
+
+    private const float MAX_TIME_ACCELERATION = 0.65f;
+    private const float MAX_ACCELERATION_SPEED = 2f;
+    private float _accelCounter;
 
     public override void CheckSwitchState()
     {
@@ -32,6 +37,8 @@ public class MovingState : BaseState
     {
         // movement logic here
         ApplyMovement();
+
+        if(_accelCounter < MAX_TIME_ACCELERATION) _accelCounter += Time.fixedDeltaTime;
     }
 
     public override void InitializeSubState()
@@ -50,7 +57,7 @@ public class MovingState : BaseState
         Vector3 player_movement = (_ctx.transform.forward * _ctx.GetMoveDir.y + _ctx.transform.right * _ctx.GetMoveDir.x);
 
         _ctx.BonusSpeed = Math.Clamp(_ctx.BonusSpeed, _ctx.GetMinBonusSpeed, _ctx.GetMaxBonusSpeed);
-        player_movement *= (_ctx.GetPlayerSpeed + _ctx.BonusSpeed);
+        player_movement *= (_ctx.GetPlayerSpeed + _ctx.BonusSpeed + ((_accelCounter / MAX_TIME_ACCELERATION)  * MAX_ACCELERATION_SPEED));
 
         Vector3 move = player_movement * Time.fixedDeltaTime;
 
