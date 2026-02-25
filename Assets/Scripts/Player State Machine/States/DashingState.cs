@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DashingState : BaseState
@@ -6,6 +7,9 @@ public class DashingState : BaseState
 
     private float _dashCounter;
     private float _dashAmplifier = 3f;
+
+    private float _dashSpeed = 1.5f;
+    private float _dashTime = 1.15f;
 
     public override void CheckSwitchState()
     {
@@ -25,6 +29,7 @@ public class DashingState : BaseState
 
     public override void EnterState()
     {
+        _ctx.SpeedQueue.Add(Tuple.Create(_dashSpeed, _dashTime));
         ApplyDashForce();
         Debug.Log("I am dashing!");
     }
@@ -54,7 +59,7 @@ public class DashingState : BaseState
     private void ApplyDashForce()
     {
         _ctx.GetImpulseSource.GenerateImpulse(2);
-        Vector3 forceDirection = _ctx.transform.forward.normalized * (_ctx.GetDashForce * _dashAmplifier);
+        Vector3 forceDirection = _ctx.transform.forward.normalized * (_ctx.GetDashForce * _dashAmplifier + ((_ctx.GetPlayerSpeed + _ctx.BonusSpeed) / 2.5f));
 
         if (_ctx.PrevMoveDir != Vector2.zero) forceDirection = (_ctx.transform.forward.normalized * 
                 _ctx.PrevMoveDir.y + _ctx.transform.right.normalized * _ctx.PrevMoveDir.x) * (_ctx.GetDashForce * _dashAmplifier);

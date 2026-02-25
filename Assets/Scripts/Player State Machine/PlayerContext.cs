@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -81,6 +82,8 @@ public class PlayerContext : MonoBehaviour
 
     private Vector2 _prevMoveDir = Vector2.zero;
 
+    private List<Tuple<float, float>> _speedQueue = new List<Tuple<float, float>>() { };
+
 
     // ****** STATE VARIABLES ******** //
     BaseState _currentState;
@@ -100,6 +103,7 @@ public class PlayerContext : MonoBehaviour
     public float GetMaxFallSpeed { get { return MAX_FALL_SPEED; } }
     public float GetMaxBonusSpeed { get { return MAX_BONUS_SPEED; } }
     public float GetMinBonusSpeed { get { return MIN_BONUS_SPEED; } } // here for verbose purposes and cleaner code
+    public List<Tuple<float, float>> SpeedQueue;
 
     // Dash Variables
     public bool EnableDash { get { return _enableDash; } set { _enableDash = value; } }
@@ -140,6 +144,7 @@ public class PlayerContext : MonoBehaviour
         // Initialize Components
         _rb = GetComponent<Rigidbody>();
         _currentPlayerHP = _playerMaxHP;
+        SpeedQueue = _speedQueue;
 
         // Configure Inputs
         _moveAction = InputSystem.actions.FindAction("Move");
@@ -185,6 +190,8 @@ public class PlayerContext : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(0f, _yaw, 0f);
         _cameraPoint.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
+
+        TryClearSpeedQueue();
     }
 
     private void FixedUpdate()
@@ -198,5 +205,24 @@ public class PlayerContext : MonoBehaviour
         _yaw += _lookDir.x * _rotateSpeed_X;
         _pitch -= _lookDir.y * _rotateSpeed_Y;
         _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+    }
+
+    void TryClearSpeedQueue()
+    {
+        for (int i = 0; i < _speedQueue.Count - 1; i++)
+        {
+            var queue = _speedQueue[i];
+
+            // If the queue's time is up, remove it
+            if (queue.Item2 < 0)
+            {
+                Debug.Log("Clearing Speed Queue #" +  i + ": " + queue.Item1 + ", " + queue.Item2);
+                _bonusSpeed -= queue.Item1;
+                _speedQueue.RemoveAt(i);
+                continue;
+            }
+
+            _speedQueue[i] = new Tuple<float, float>(queue.Item1, queue.Item2 - Time.deltaTime);
+        }
     }
 }

@@ -53,6 +53,8 @@ public class MovingState : BaseState
 
     void ApplyMovement()
     {
+        ApplyBonusSpeed();
+
         float y = _ctx.GetRigidbody.linearVelocity.y;
         Vector3 player_movement = (_ctx.transform.forward * _ctx.GetMoveDir.y + _ctx.transform.right * _ctx.GetMoveDir.x);
 
@@ -63,6 +65,21 @@ public class MovingState : BaseState
 
         _ctx.GetRigidbody.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
         _ctx.PrevMoveDir = new Vector2(_ctx.GetMoveDir.x, _ctx.GetMoveDir.y);
+
+        Debug.Log(_ctx.BonusSpeed);
         //_rb.AddForce(player_movement * 2.5f, ForceMode.Force);
+    }
+
+    void ApplyBonusSpeed()
+    {
+        _ctx.BonusSpeed = 0;
+
+        foreach (var queue in _ctx.SpeedQueue)
+        {
+
+            float bonusSpeed = queue.Item1;
+
+            _ctx.BonusSpeed += bonusSpeed;
+        }
     }
 }
