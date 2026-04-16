@@ -2256,7 +2256,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
@@ -2308,7 +2308,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -4359,6 +4359,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 2
+--- !u!114 &891460964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891460959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f23183102587c4b991508d1f366eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXScript_Test
+  soundFXObject: {fileID: 0}
 --- !u!1 &896975116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4677,6 +4690,51 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &919015542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 919015544}
+  - component: {fileID: 919015543}
+  m_Layer: 0
+  m_Name: SFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &919015543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919015542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f23183102587c4b991508d1f366eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXScript_Test
+  soundFXObject: {fileID: 2637688098495061934, guid: 420f7acf7e4cd3b4c9c557f90b03e078, type: 3}
+--- !u!4 &919015544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919015542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929051956
 GameObject:
   m_ObjectHideFlags: 0
@@ -6466,6 +6524,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
       insertIndex: -1
       addedObject: {fileID: 891460962}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 891460964}
   m_SourcePrefab: {fileID: 100100000, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
 --- !u!43 &1233927043
 Mesh:
@@ -9856,3 +9917,4 @@ SceneRoots:
   - {fileID: 1997842943}
   - {fileID: 1414711210}
   - {fileID: 348650519}
+  - {fileID: 919015544}
