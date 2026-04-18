@@ -66,7 +66,7 @@ public class MovingState : BaseState
         _ctx.GetRigidbody.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
         _ctx.PrevMoveDir = new Vector2(_ctx.GetMoveDir.x, _ctx.GetMoveDir.y);
 
-        Debug.Log(_ctx.BonusSpeed);
+        //Debug.Log(_ctx.BonusSpeed);
         //_rb.AddForce(player_movement * 2.5f, ForceMode.Force);
     }
 

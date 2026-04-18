@@ -33,8 +33,10 @@ public class SlidingState : BaseState
     public override void EnterState()
     {
         _ctx.SpeedQueue.Add(Tuple.Create(_slideSpeed, _slideTime));
+
         _ctx.transform.localPosition = new Vector3(_ctx.transform.localPosition.x, _ctx.transform.localPosition.y - 0.5f, _ctx.transform.localPosition.z);
         _ctx.transform.localScale = new Vector3(1, 0.5f, 1);
+
         Debug.Log("currently in sliding state");
 
         ApplySlideForce();

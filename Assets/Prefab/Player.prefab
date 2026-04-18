@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 3869290513766424620}
   - component: {fileID: 1768428463020288719}
   - component: {fileID: 7732245068092140009}
+  - component: {fileID: 4245159287000486380}
   - component: {fileID: 6548395984804978485}
   - component: {fileID: 1309664129178326427}
   - component: {fileID: 5283526031268435122}
@@ -191,6 +192,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4245159287000486380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3318995488567909698}
+  m_Material: {fileID: 13400000, guid: 2f2a8b9790922a046bff8c14238a8a14, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1, y: 2, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &6548395984804978485
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -635,6 +657,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
