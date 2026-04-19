@@ -18,7 +18,7 @@ public class AirborneState : BaseState
             SwitchState(_init.Grounded());
         }
 
-        if (_ctx.GetSlideInput.WasPressedThisFrame())
+        if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
         {
             SwitchState(_init.Sliding());
         }

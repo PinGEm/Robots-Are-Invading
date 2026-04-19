@@ -23,6 +23,7 @@ public class PlayerContext : MonoBehaviour
     private const float MAX_FALL_SPEED = 30;
     private const float JUMP_APEX_THRESHOLD = 0.185f; // temporary implementation if apex hanging
     private const float SPEED_BOOST_SLIDE_TIMER = 2f;
+    private const float SLIDE_COOLDOWN = 0.175f;
 
     private const float MAX_BONUS_SPEED = 25;
     private const float MIN_BONUS_SPEED = 0;
@@ -45,6 +46,8 @@ public class PlayerContext : MonoBehaviour
     private bool _startApexTimer;
     private float _apexCounter;
     private float _bonusSpeed;
+    private bool _enableSlideCooldown = false;
+    private float _slideCooldownCounter = 0;
 
     [Header("Miscellaneous")]
     [SerializeField] private BaseWeapon _currentWeapon;
@@ -126,6 +129,7 @@ public class PlayerContext : MonoBehaviour
     public InputAction GetSlideInput { get { return _slideAction; } }
     public float GetSlideTime { get { return _slideTime; } }
     public float GetSlideBoost { get { return _slideBoost; } }
+    public bool GetSlideCooldown { get { return _enableSlideCooldown; } set { _enableSlideCooldown = value; } }
 
     #endregion
 
@@ -174,6 +178,8 @@ public class PlayerContext : MonoBehaviour
 
         _currentState.UpdateStates();
 
+        CheckTimers();
+
         UpdateYawPitch();
 
         if (_attackAction.WasPressedThisFrame())
@@ -197,6 +203,18 @@ public class PlayerContext : MonoBehaviour
     private void FixedUpdate()
     {
         _currentState.FixedUpdateStates();
+    }
+
+
+    void CheckTimers()
+    {
+        if (_enableSlideCooldown) _slideCooldownCounter += Time.deltaTime;
+
+        if (_enableSlideCooldown && _slideCooldownCounter >= SLIDE_COOLDOWN)
+        {   
+            _enableSlideCooldown = false;
+            _slideCooldownCounter = 0;
+        }
     }
 
     void UpdateYawPitch()

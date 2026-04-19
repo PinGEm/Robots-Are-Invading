@@ -20,7 +20,7 @@ public class JumpingState : BaseState
             SwitchState(_init.Airborne());
         }
 
-        if (_ctx.GetSlideInput.WasPressedThisFrame())
+        if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
         {
             SwitchState(_init.Sliding());
         }

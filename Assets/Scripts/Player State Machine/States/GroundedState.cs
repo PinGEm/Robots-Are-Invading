@@ -13,7 +13,7 @@ public class GroundedState : BaseState
             SwitchState(_init.Dashing());
         }
 
-        if (_ctx.GetSlideInput.WasPressedThisFrame())
+        if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
         {
             SwitchState(_init.Sliding());
         }

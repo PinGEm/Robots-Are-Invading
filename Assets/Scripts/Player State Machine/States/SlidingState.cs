@@ -45,6 +45,7 @@ public class SlidingState : BaseState
     {
         Debug.Log("exiting sliding state");
         _slideCounter = _ctx.GetSlideTime;
+        _ctx.GetSlideCooldown = true;
         _ctx.transform.localScale = new Vector3(1, 1, 1);
     }
 
