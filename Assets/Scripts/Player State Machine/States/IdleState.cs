@@ -10,7 +10,10 @@ public class IdleState : BaseState
         {
             SwitchState(_init.Moving());
         }
-
+        else if (_ctx.GetSlideInput.WasPressedThisFrame())
+        {
+            SwitchState(_init.Sliding());
+        }
     }
 
     public override void EnterState()

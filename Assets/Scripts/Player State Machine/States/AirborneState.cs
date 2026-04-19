@@ -17,6 +17,11 @@ public class AirborneState : BaseState
         {
             SwitchState(_init.Grounded());
         }
+
+        if (_ctx.GetSlideInput.WasPressedThisFrame())
+        {
+            SwitchState(_init.Sliding());
+        }
     }
 
     public override void EnterState()

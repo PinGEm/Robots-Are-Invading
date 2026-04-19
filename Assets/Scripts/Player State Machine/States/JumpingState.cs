@@ -19,6 +19,11 @@ public class JumpingState : BaseState
         {
             SwitchState(_init.Airborne());
         }
+
+        if (_ctx.GetSlideInput.WasPressedThisFrame())
+        {
+            SwitchState(_init.Sliding());
+        }
     }
 
     public override void EnterState()

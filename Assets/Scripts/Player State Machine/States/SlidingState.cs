@@ -14,18 +14,17 @@ public class SlidingState : BaseState
     public override void CheckSwitchState()
     {
         Debug.Log("Checking switch states");
+
         if (_ctx.GetSlideInput.WasReleasedThisFrame() || _slideCounter >= _ctx.GetSlideTime)
         {
-            Debug.Log("Trying to switch states");
-            if (_ctx.GetMoveDir == Vector2.zero)
+            if (_ctx.IsGrounded)
             {
-                Debug.Log("SWITCHING TO IDLE");
-                SwitchState(_init.Idle());
+                SwitchState(_init.Grounded());
             }
-            else
+
+            if (!_ctx.IsGrounded)
             {
-                Debug.Log("SWITCHING TO MOVING");
-                SwitchState(_init.Moving());
+                SwitchState(_init.Airborne());
             }
         }
     }
@@ -45,6 +44,7 @@ public class SlidingState : BaseState
     public override void ExitState()
     {
         Debug.Log("exiting sliding state");
+        _slideCounter = _ctx.GetSlideTime;
         _ctx.transform.localScale = new Vector3(1, 1, 1);
     }
 
