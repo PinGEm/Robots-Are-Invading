@@ -4359,19 +4359,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 2
---- !u!114 &891460964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891460959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f23183102587c4b991508d1f366eca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SFXScript_Test
-  soundFXObject: {fileID: 0}
 --- !u!114 &891460967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4385,7 +4372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
   maxHealth: 5
-  damageSoundClip: {fileID: 0}
+  damageSoundClip: {fileID: 8300000, guid: bdd14bb455408b14486e75db0c1ed4f0, type: 3}
 --- !u!1 &896975116
 GameObject:
   m_ObjectHideFlags: 0
@@ -6542,9 +6529,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
       insertIndex: -1
       addedObject: {fileID: 891460962}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 891460964}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
       insertIndex: -1
       addedObject: {fileID: 891460967}
