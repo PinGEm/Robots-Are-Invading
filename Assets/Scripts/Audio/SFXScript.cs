@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class SFXScript_Test : MonoBehaviour
+public class SFXScript : MonoBehaviour
 {
-    public static SFXScript_Test instance;
+    public static SFXScript instance;
 
     [SerializeField] private AudioSource soundFXObject;
 

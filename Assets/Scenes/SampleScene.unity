@@ -4372,6 +4372,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXScript_Test
   soundFXObject: {fileID: 0}
+--- !u!114 &891460967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891460959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5016439267141834796732721a40d85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
+  maxHealth: 5
+  damageSoundClip: {fileID: 0}
 --- !u!1 &896975116
 GameObject:
   m_ObjectHideFlags: 0
@@ -6510,6 +6524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lowpoly-robot-base-on-transient-gundam@Standing Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
       propertyPath: m_Controller
       value: 
@@ -6527,6 +6545,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
       insertIndex: -1
       addedObject: {fileID: 891460964}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 891460967}
   m_SourcePrefab: {fileID: 100100000, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
 --- !u!43 &1233927043
 Mesh:
@@ -7684,6 +7705,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!1 &1713817218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3318995488567909698, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+  m_PrefabInstance: {fileID: 6382102551366715891}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1713817225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713817218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a17a7e698354d4cb70111837841d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Debugging
 --- !u!1 &1727897478
 GameObject:
   m_ObjectHideFlags: 0
@@ -9894,7 +9932,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3318995488567909698, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1713817225}
   m_SourcePrefab: {fileID: 100100000, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
