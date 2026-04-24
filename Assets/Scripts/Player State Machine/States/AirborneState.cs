@@ -6,8 +6,18 @@ public class AirborneState : BaseState
         InitializeSubState();
     }
 
+    private const float COYOTE_TIME_CUTOFF = 0.2f;
+
+    private float _coyoteTimeCounter = 0;
+
     public override void CheckSwitchState()
     {
+        if(_ctx.GetJumpInput.WasPressedThisFrame() && _coyoteTimeCounter <= COYOTE_TIME_CUTOFF && _ctx.IsCoyoteTime == true)
+        {
+            Debug.Log("Allow Coyote Time");
+            SwitchState(_init.Jumping());
+        }
+
         if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
         {
             SwitchState(_init.Dashing());
@@ -26,6 +36,7 @@ public class AirborneState : BaseState
 
     public override void EnterState()
     {
+        
         Debug.Log("I am airborne!");
     }
 
@@ -68,6 +79,11 @@ public class AirborneState : BaseState
 
     public override void UpdateState()
     {
+        if (_ctx.IsCoyoteTime == true)
+        {
+            _coyoteTimeCounter += Time.deltaTime; 
+        }
+
         CheckSwitchState();
     }
 }

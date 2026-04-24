@@ -48,6 +48,7 @@ public class PlayerContext : MonoBehaviour
     private float _bonusSpeed;
     private bool _enableSlideCooldown = false;
     private float _slideCooldownCounter = 0;
+    private bool _allowCoyoteTime = false;
 
     [Header("Miscellaneous")]
     [SerializeField] private BaseWeapon _currentWeapon;
@@ -124,6 +125,7 @@ public class PlayerContext : MonoBehaviour
     public float GetFallMultiplier { get { return _fallMultiplier; } }
     public float GetLowJumpMultiplier { get { return _lowJumpMultiplier; } }
     public float GetJumpForce { get { return _jumpForce; } }
+    public bool IsCoyoteTime { get { return _allowCoyoteTime; } set { _allowCoyoteTime = value; } }
 
     // Sliding Variables
     public InputAction GetSlideInput { get { return _slideAction; } }

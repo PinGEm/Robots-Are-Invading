@@ -31,6 +31,7 @@ public class GroundedState : BaseState
 
     public override void EnterState()
     {
+        _ctx.IsCoyoteTime = true;
         Debug.Log("I am grounded!");
     }
 
