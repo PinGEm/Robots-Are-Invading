@@ -9185,6 +9185,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 564970545540053169, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1213686584830398460, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Name
       value: Pistol
@@ -9193,12 +9197,20 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 640
       objectReference: {fileID: 0}
+    - target: {fileID: 3286322520419569116, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318995488567909698, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3318995488567909698, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481063002470610285, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3869290513766424620, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
@@ -9240,6 +9252,10 @@ PrefabInstance:
     - target: {fileID: 3869290513766424620, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267436671422899920, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5283526031268435122, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: weapon

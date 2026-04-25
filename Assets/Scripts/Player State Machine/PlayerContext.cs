@@ -68,8 +68,26 @@ public class PlayerContext : MonoBehaviour
 
     private bool _onGround()
     {
-        if (Physics.SphereCast(_groundCheck.transform.position, GROUND_CHECK_RADII, Vector3.down,
-            out RaycastHit _hit, GROUND_CHECK_ALLOWANCE, _groundLayer)) return Vector3.Angle(_hit.normal, Vector3.up) < 20f;
+        Vector3 origin = _groundCheck.transform.position;
+
+        Vector3[] offsets = new Vector3[]
+        {
+            Vector3.zero,
+            new Vector3(0.4f, 0, 0.4f),
+            new Vector3(-0.4f, 0, 0.4f),
+            new Vector3(0.4f, 0, -0.4f),
+            new Vector3(-0.4f, 0, -0.4f),
+        };
+
+        foreach (var offset in offsets)
+        {
+            if (Physics.Raycast(origin + offset, Vector3.down, out RaycastHit hit,
+                GROUND_CHECK_ALLOWANCE, _groundLayer))
+            {
+                if (Vector3.Angle(hit.normal, Vector3.up) < 20f)
+                    return true;
+            }
+        }
 
         return false;
     }
