@@ -7,12 +7,16 @@ public class AirborneState : BaseState
     }
 
     private const float COYOTE_TIME_CUTOFF = 0.2f;
+    private const float JUMP_BUFFER_CUTOFF = 0.275f;
 
+    private float _jumpBufferCounter = 0;
     private float _coyoteTimeCounter = 0;
+
+    bool _enableJumpBuffer = false;
 
     public override void CheckSwitchState()
     {
-        if(_ctx.GetJumpInput.WasPressedThisFrame() && _coyoteTimeCounter <= COYOTE_TIME_CUTOFF && _ctx.IsCoyoteTime == true)
+        if(_ctx.GetJumpInput.WasPressedThisFrame() && _coyoteTimeCounter <= COYOTE_TIME_CUTOFF && _ctx.IsCoyoteTime == true && !_enableJumpBuffer)
         {
             Debug.Log("Allow Coyote Time");
             SwitchState(_init.Jumping());
@@ -23,9 +27,13 @@ public class AirborneState : BaseState
             SwitchState(_init.Dashing());
         }
 
-        if (_ctx.IsGrounded)
+        if (_ctx.IsGrounded && !_enableJumpBuffer)
         {
             SwitchState(_init.Grounded());
+        }
+        else if(_ctx.IsGrounded && _enableJumpBuffer)
+        {
+            SwitchState(_init.Jumping());
         }
 
         if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
@@ -82,6 +90,20 @@ public class AirborneState : BaseState
         if (_ctx.IsCoyoteTime == true)
         {
             _coyoteTimeCounter += Time.deltaTime; 
+        }
+
+        if (_ctx.GetJumpInput.IsPressed())
+        {
+            _jumpBufferCounter += Time.deltaTime;
+        }
+        else
+        {
+            _jumpBufferCounter = 0;
+        }
+
+        if (_ctx.IsGrounded == true && (_ctx.GetJumpInput.IsPressed() && _jumpBufferCounter <= JUMP_BUFFER_CUTOFF))
+        {
+            _enableJumpBuffer = true;
         }
 
         CheckSwitchState();
