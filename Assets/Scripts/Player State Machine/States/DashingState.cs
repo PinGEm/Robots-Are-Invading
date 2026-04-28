@@ -5,11 +5,17 @@ public class DashingState : BaseState
 {
     public DashingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) { }
 
+    private const float SLIDE_BUFFER_CUTOFF = 0.275f;
+
     private float _dashCounter;
     private float _dashAmplifier = 3f;
 
     private float _dashSpeed = 1.5f;
     private float _dashTime = 1.15f;
+
+
+    private float _slideBufferCounter = 0;
+
 
     public override void CheckSwitchState()
     {
@@ -23,6 +29,11 @@ public class DashingState : BaseState
             if (!_ctx.IsGrounded)
             {
                 SwitchState(_init.Airborne());
+            }
+
+            if (_ctx.GetSlideInput.IsPressed() && _slideBufferCounter <= SLIDE_BUFFER_CUTOFF && !_ctx.GetSlideCooldown)
+            {
+                SwitchState(_init.Sliding());
             }
         }
     }
@@ -52,6 +63,15 @@ public class DashingState : BaseState
 
     public override void UpdateState()
     {
+        if (_ctx.GetSlideInput.IsPressed())
+        {
+            _slideBufferCounter += Time.deltaTime;
+        }
+        else
+        {
+            _slideBufferCounter = 0;
+        }
+
         CheckSwitchState();
         _dashCounter += Time.deltaTime;
     }

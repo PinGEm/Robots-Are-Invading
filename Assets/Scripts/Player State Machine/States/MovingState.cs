@@ -11,6 +11,7 @@ public class MovingState : BaseState
     private const float MAX_ACCELERATION_SPEED = 2f;
     private float _accelCounter;
 
+
     public override void CheckSwitchState()
     {
         if (_ctx.GetMoveDir == Vector2.zero)
@@ -33,9 +34,10 @@ public class MovingState : BaseState
     public override void FixedUpdateState()
     {
         // movement logic here
+
         ApplyMovement();
 
-        if(_accelCounter < MAX_TIME_ACCELERATION) _accelCounter += Time.fixedDeltaTime;
+        if (_accelCounter < MAX_TIME_ACCELERATION) _accelCounter += Time.fixedDeltaTime;
     }
 
     public override void InitializeSubState()
@@ -63,7 +65,7 @@ public class MovingState : BaseState
         if (!_ctx.IsOnSlope) _ctx.GetRigidbody.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
         else
         {
-            Vector3 slopeMove = Vector3.ProjectOnPlane(player_movement, _ctx.GetSlopeHit.normal);
+            Vector3 slopeMove = Vector3.ProjectOnPlane(player_movement * 1.5f, _ctx.GetSlopeHit.normal);
             _ctx.GetRigidbody.linearVelocity = new Vector3(slopeMove.x, y, slopeMove.z);
 
             if (_ctx.GetRigidbody.linearVelocity.y > 0)
