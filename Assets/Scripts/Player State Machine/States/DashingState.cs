@@ -15,7 +15,7 @@ public class DashingState : BaseState
     {
         if (_dashCounter >= _ctx.GetDashTime)
         {
-            if (_ctx.IsGrounded)
+            if (_ctx.IsGrounded || _ctx.IsOnSlope)
             {
                 SwitchState(_init.Grounded());
             }

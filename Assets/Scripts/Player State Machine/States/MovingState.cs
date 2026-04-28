@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class MovingState : BaseState
@@ -59,11 +60,19 @@ public class MovingState : BaseState
 
         Vector3 move = player_movement * Time.fixedDeltaTime;
 
-        _ctx.GetRigidbody.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
-        _ctx.PrevMoveDir = new Vector2(_ctx.GetMoveDir.x, _ctx.GetMoveDir.y);
+        if (!_ctx.IsOnSlope) _ctx.GetRigidbody.linearVelocity = new Vector3(player_movement.x, y, player_movement.z);
+        else
+        {
+            Vector3 slopeMove = Vector3.ProjectOnPlane(player_movement, _ctx.GetSlopeHit.normal);
+            _ctx.GetRigidbody.linearVelocity = new Vector3(slopeMove.x, y, slopeMove.z);
 
-        //Debug.Log(_ctx.BonusSpeed);
-        //_rb.AddForce(player_movement * 2.5f, ForceMode.Force);
+            if (_ctx.GetRigidbody.linearVelocity.y > 0)
+            {
+                _ctx.GetRigidbody.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+        }
+
+        _ctx.PrevMoveDir = new Vector2(_ctx.GetMoveDir.x, _ctx.GetMoveDir.y);
     }
 
     void ApplyBonusSpeed()

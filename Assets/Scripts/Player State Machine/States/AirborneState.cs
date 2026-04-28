@@ -27,7 +27,7 @@ public class AirborneState : BaseState
             SwitchState(_init.Dashing());
         }
 
-        if (_ctx.IsGrounded && !_enableJumpBuffer)
+        if ((_ctx.IsGrounded && !_enableJumpBuffer) || _ctx.IsOnSlope)
         {
             SwitchState(_init.Grounded());
         }

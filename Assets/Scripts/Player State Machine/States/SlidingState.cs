@@ -51,7 +51,13 @@ public class SlidingState : BaseState
 
     public override void FixedUpdateState()
     {
-        
+        if (_ctx.IsOnSlope)
+        {
+            if (_ctx.GetRigidbody.linearVelocity.y > 0)
+            {
+                _ctx.GetRigidbody.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+        }
     }
 
     public override void InitializeSubState()

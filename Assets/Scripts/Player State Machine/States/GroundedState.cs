@@ -23,7 +23,7 @@ public class GroundedState : BaseState
             SwitchState(_init.Jumping());
         }
 
-        if (!_ctx.IsGrounded)
+        if (!_ctx.IsGrounded && !_ctx.IsOnSlope)
         {
             SwitchState(_init.Airborne());
         }

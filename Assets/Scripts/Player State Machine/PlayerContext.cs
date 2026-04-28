@@ -66,6 +66,10 @@ public class PlayerContext : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private GameObject _groundCheck;
 
+    [SerializeField] private float _maxSlopeAngle = 30;
+    private RaycastHit _slopeHit;
+
+
     private bool _onGround()
     {
         Vector3 origin = _groundCheck.transform.position;
@@ -90,6 +94,29 @@ public class PlayerContext : MonoBehaviour
         }
 
         return false;
+    }
+
+    private bool _onSlope()
+    {
+        BoxCollider col = GetComponent<BoxCollider>();
+
+        float rayLength = col.bounds.extents.y + 0.5f; // always reaches ground
+        Vector3 origin = col.bounds.center;
+
+        Debug.DrawRay(origin, Vector3.down * rayLength, Color.red);
+
+        if (Physics.Raycast(origin, Vector3.down, out _slopeHit, rayLength, _groundLayer))
+        {
+            float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+            return angle <= _maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    private Vector3 _getSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(_moveDir, _slopeHit.normal).normalized;
     }
 
     private bool _isDead()
@@ -150,6 +177,11 @@ public class PlayerContext : MonoBehaviour
     public float GetSlideTime { get { return _slideTime; } }
     public float GetSlideBoost { get { return _slideBoost; } }
     public bool GetSlideCooldown { get { return _enableSlideCooldown; } set { _enableSlideCooldown = value; } }
+
+    // Slope Variables
+    public bool IsOnSlope { get { return _onSlope(); } }
+    public Vector3 GetSlopeMoveDirection { get { return _getSlopeMoveDirection(); }  }
+    public RaycastHit GetSlopeHit { get { return _slopeHit; } }
 
     #endregion
 
