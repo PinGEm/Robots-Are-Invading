@@ -55,6 +55,16 @@ public class AirborneState : BaseState
 
     public override void FixedUpdateState()
     {
+        RaycastHit hit;
+
+        if (Physics.Raycast(_ctx.GetGroundTransform().transform.position, Vector3.down, out hit, 0.5f) && _ctx.GetRigidbody.linearVelocity.y !<= -0.75f && _ctx.IsCoyoteTime)
+        {
+            _ctx.GetRigidbody.AddForce(Vector3.down * 80f, ForceMode.Force);
+            Debug.Log("stepping down from stair");
+        }
+
+        Debug.DrawRay(_ctx.GetGroundTransform().transform.position, Vector3.down * hit.distance, Color.red);
+
         if (_ctx.GetRigidbody.linearVelocity.y < 0)
         {
             _ctx.GetRigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (_ctx.GetFallMultiplier - 1) * Time.fixedDeltaTime;

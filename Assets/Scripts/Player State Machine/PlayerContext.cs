@@ -65,6 +65,7 @@ public class PlayerContext : MonoBehaviour
     [Header("Miscellaneous")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private GameObject _groundCheck;
+    public GameObject GetGroundTransform() { return _groundCheck; }
 
     [SerializeField] private float _maxSlopeAngle = 30;
     private RaycastHit _slopeHit;
@@ -103,7 +104,7 @@ public class PlayerContext : MonoBehaviour
         float rayLength = col.bounds.extents.y + 0.5f; // always reaches ground
         Vector3 origin = col.bounds.center;
 
-        Debug.DrawRay(origin, Vector3.down * rayLength, Color.red);
+        //Debug.DrawRay(origin, Vector3.down * rayLength, Color.red);
 
         if (Physics.Raycast(origin, Vector3.down, out _slopeHit, rayLength, _groundLayer))
         {
