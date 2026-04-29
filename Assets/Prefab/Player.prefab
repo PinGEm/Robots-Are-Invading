@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8299451894301791562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,6 @@ MonoBehaviour:
     m_Bits: 64
   _groundCheck: {fileID: 94714533274143935}
   _maxSlopeAngle: 40
-  _slopeBoost: 4
   _impulseSource: {fileID: 5376976828783885596}
 --- !u!1 &5038116450832246445
 GameObject:
