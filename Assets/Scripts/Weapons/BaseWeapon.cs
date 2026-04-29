@@ -18,12 +18,17 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void Awake()
     {
         _originalScale = this.transform.localScale;
+        Debug.Log(_originalScale);
         Initialize();
     }
 
     protected virtual void Update()
     {
-        this.transform.localScale = _originalScale;
+        transform.localScale = new Vector3(
+            2.0f / transform.parent.localScale.x,
+            2.0f / transform.parent.localScale.y,
+            2.0f / transform.parent.localScale.z
+        );
     }
 
     protected virtual void Initialize()

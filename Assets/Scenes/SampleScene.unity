@@ -8494,11 +8494,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261797646}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &1263116401 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6883549737758468153, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-  m_PrefabInstance: {fileID: 8936115383200784827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1339600822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11105,10 +11100,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1857230739451227518, guid: 68c47fd481798fe47953b5a96eb74276, type: 3}
-      propertyPath: 'm_Cameras.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1263116401}
     - target: {fileID: 2708240491277802237, guid: 68c47fd481798fe47953b5a96eb74276, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.02991
@@ -11359,63 +11350,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a75614b2ca6b9824eacd43551c2d4b2c, type: 3}
---- !u!1001 &8936115383200784827
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.02991
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.58291
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347284345104071739, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189795990677620909, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
-      propertyPath: m_Name
-      value: Gun Camera
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f6a7489a46407f243b35d6eae01d44bc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11425,7 +11359,6 @@ SceneRoots:
   - {fileID: 1804398892}
   - {fileID: 6382102551366715891}
   - {fileID: 1527628791150155114}
-  - {fileID: 8936115383200784827}
   - {fileID: 746174296}
   - {fileID: 1220654700}
   - {fileID: 896975120}
