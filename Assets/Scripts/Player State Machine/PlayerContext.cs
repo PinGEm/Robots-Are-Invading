@@ -243,7 +243,7 @@ public class PlayerContext : MonoBehaviour
         {
             if (_currentWeapon != null)
             {
-                _currentWeapon.ExecuteShot(_cameraPoint.transform.position + _cameraPoint.transform.forward);
+                _currentWeapon.TryFire();
             }
         }
 
