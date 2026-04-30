@@ -7,6 +7,7 @@ public abstract class BaseWeapon : MonoBehaviour
     [Header("Weapon Data")]
     [SerializeField] protected WeaponData _data;
     [SerializeField] protected Transform _firePoint;
+    [SerializeField] protected AudioClip[] _shootSFX;
 
     private Vector3 _originalScale;
     private Vector3 _originalLocalPosition;
@@ -72,6 +73,10 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual void Fire()
     {
+        Debug.Log("firing gun!");
+
+        SFXManager.instance.PlayRandomSoundFXClip(_data.gunSFX, transform);
+
         _currentAmmo--;
 
         for (int i = 0; i < _data.pellets; i++)

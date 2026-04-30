@@ -50,9 +50,12 @@ public class PlayerContext : MonoBehaviour
     private float _slideCooldownCounter = 0;
     private bool _allowCoyoteTime = false;
 
-    [Header("Miscellaneous")]
+    [Header("Gun")]
     [SerializeField] private BaseWeapon _currentWeapon;
     public BaseWeapon GetCurrentWeapon { get { return _currentWeapon; }  set { _currentWeapon = value; } }
+
+    [Header("Audio Clips")]
+    public AudioClip[] _dashingSFX;
 
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
@@ -240,7 +243,7 @@ public class PlayerContext : MonoBehaviour
         {
             if (_currentWeapon != null)
             {
-                _currentWeapon.ExecuteShot(_cameraPoint.transform.position + _cameraPoint.transform.forward);
+                _currentWeapon.TryFire();
             }
         }
 

@@ -23,3 +23,5 @@ MonoBehaviour:
   burstCount: 3
   spreadAngle: 0
   pellets: 1
+  gunSFX:
+  - {fileID: 8300000, guid: a00afed8ff3ee7b4db3784b22a768e31, type: 3}
