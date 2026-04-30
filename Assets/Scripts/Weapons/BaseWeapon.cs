@@ -9,6 +9,7 @@ public abstract class BaseWeapon : MonoBehaviour
     [SerializeField] protected Transform _firePoint;
 
     private Vector3 _originalScale;
+    private Vector3 _originalLocalPosition;
 
     protected int _currentAmmo;
     protected int _reserveAmmo;
@@ -18,12 +19,29 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void Awake()
     {
         _originalScale = this.transform.localScale;
+        _originalLocalPosition = this.transform.localPosition;
+
+        Debug.Log(_originalScale);
         Initialize();
     }
 
-    protected virtual void Update()
+    protected virtual void LateUpdate()
     {
-        this.transform.localScale = _originalScale;
+        Vector3 parentScale = transform.parent.lossyScale;
+
+        // Fix scale
+        transform.localScale = new Vector3(
+            _originalScale.x / parentScale.x,
+            _originalScale.y / parentScale.y,
+            _originalScale.z / parentScale.z
+        );
+
+        // Fix position
+        transform.localPosition = new Vector3(
+            _originalLocalPosition.x / parentScale.x,
+            _originalLocalPosition.y / parentScale.y,
+            _originalLocalPosition.z / parentScale.z
+        );
     }
 
     protected virtual void Initialize()

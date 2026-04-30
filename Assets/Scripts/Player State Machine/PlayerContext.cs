@@ -52,6 +52,7 @@ public class PlayerContext : MonoBehaviour
 
     [Header("Miscellaneous")]
     [SerializeField] private BaseWeapon _currentWeapon;
+    public BaseWeapon GetCurrentWeapon { get { return _currentWeapon; }  set { _currentWeapon = value; } }
 
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
