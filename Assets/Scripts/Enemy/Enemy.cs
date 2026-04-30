@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damageAmount;
 
         // Play SFX When Damaged
-        SFXScript.instance.PlaySoundFXClip(damageSoundClip, transform, 1f);
+        SFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 1f);
 
         if(currentHealth <= 0)
         {
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Player collided an Enemy!");
             
             // Play SFX When Collided
-            SFXScript.instance.PlaySoundFXClip(damageSoundClip, transform, 1f);
+            SFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 1f);
         }
 
         
