@@ -42,6 +42,7 @@ public class DashingState : BaseState
     {
         _ctx.SpeedQueue.Add(Tuple.Create(_dashSpeed, _dashTime));
         ApplyDashForce();
+        SFXManager.instance.PlayRandomSoundFXClip(_ctx._dashingSFX, _ctx.transform);
         Debug.Log("I am dashing!");
     }
 

@@ -262,6 +262,9 @@ MonoBehaviour:
   _fallMultiplier: 3.15
   _lowJumpMultiplier: 4
   _currentWeapon: {fileID: 5795451299475730527}
+  _dashingSFX:
+  - {fileID: 8300000, guid: 7717d823d525e57499631aa2c703ddf6, type: 3}
+  - {fileID: 8300000, guid: 660b9150112377449961198b65f7eb9f, type: 3}
   _rotateSpeed_X: 0.3
   _rotateSpeed_Y: 0.4
   _cameraPoint: {fileID: 6205970114091066947}

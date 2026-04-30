@@ -11422,6 +11422,10 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5283526031268435122, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: '_dashingSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 660b9150112377449961198b65f7eb9f, type: 3}
     - target: {fileID: 5374999440635063517, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
