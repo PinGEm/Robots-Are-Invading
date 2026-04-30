@@ -11,7 +11,22 @@ public class BrightnessManager : MonoBehaviour
     {
         // 1. Load the saved brightness. Defaults to 1 (full brightness) if never saved before.
         float savedBrightness = PlayerPrefs.GetFloat("GameBrightness", 1f);
+        void Start()
+        {
+            // 1. Load the saved brightness. Defaults to 1 (full brightness) if never saved before.
+            float savedBrightness = PlayerPrefs.GetFloat("GameBrightness", 1f);
 
+            Debug.Log("LEVEL LOADED! The saved brightness number is: " + savedBrightness);
+
+            // 2. If we are in the Options menu (meaning a slider is attached), update the slider visually
+            if (brightnessSlider != null)
+            {
+                brightnessSlider.value = savedBrightness;
+            }
+
+            // 3. Apply the darkness to the screen right away
+            ApplyDarkness(savedBrightness);
+        }
         // 2. If we are in the Options menu (meaning a slider is attached), update the slider visually
         if (brightnessSlider != null)
         {
@@ -42,4 +57,5 @@ public class BrightnessManager : MonoBehaviour
             blackOverlay.color = color;
         }
     }
+
 }
