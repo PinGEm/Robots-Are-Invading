@@ -37,12 +37,15 @@ public class SFXManager : MonoBehaviour
 
     public void PlayRandomSoundFXClip(AudioClip[] audioClips, Transform spawnTransform, float volume = 1f)
     {
-        int rand = Random.Range(0, audioClips.Length);
+        int rand_clip = Random.Range(0, audioClips.Length);
+        float rand_pitch = Random.Range(0.85f, 1.15f);
 
         AudioSource audiosource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
         
-        audiosource.clip = audioClips[rand];
+        audiosource.clip = audioClips[rand_clip];
         audiosource.volume = volume;
+        audiosource.pitch = rand_pitch;
+
         audiosource.Play();
 
         float clipLength = audiosource.clip.length;
