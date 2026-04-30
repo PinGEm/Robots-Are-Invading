@@ -23,7 +23,7 @@ public class GroundedState : BaseState
             SwitchState(_init.Jumping());
         }
 
-        if (!_ctx.IsGrounded)
+        if (!_ctx.IsGrounded && !_ctx.IsOnSlope)
         {
             SwitchState(_init.Airborne());
         }
@@ -31,6 +31,7 @@ public class GroundedState : BaseState
 
     public override void EnterState()
     {
+        _ctx.IsCoyoteTime = true;
         Debug.Log("I am grounded!");
     }
 

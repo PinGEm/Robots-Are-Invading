@@ -23,7 +23,7 @@ public class IdleState : BaseState
 
     public override void ExitState()
     {
-        
+        _ctx.GetRigidbody.useGravity = true;
     }
 
     public override void FixedUpdateState()
@@ -38,6 +38,16 @@ public class IdleState : BaseState
 
     public override void UpdateState()
     {
+        if (_ctx.IsOnSlope)
+        {
+            _ctx.GetRigidbody.linearVelocity = Vector3.zero;
+            _ctx.GetRigidbody.useGravity = false; 
+        }
+        else
+        {
+            _ctx.GetRigidbody.useGravity = true;
+        }
+
         CheckSwitchState();
     }
 }

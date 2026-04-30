@@ -45,13 +45,20 @@ public class SlidingState : BaseState
     {
         Debug.Log("exiting sliding state");
         _slideCounter = _ctx.GetSlideTime;
+
         _ctx.GetSlideCooldown = true;
         _ctx.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public override void FixedUpdateState()
     {
-        
+        if (_ctx.IsOnSlope)
+        {
+            if (_ctx.GetRigidbody.linearVelocity.y > 0)
+            {
+                _ctx.GetRigidbody.AddForce(Vector3.down * 80f, ForceMode.Force);
+            }
+        }
     }
 
     public override void InitializeSubState()

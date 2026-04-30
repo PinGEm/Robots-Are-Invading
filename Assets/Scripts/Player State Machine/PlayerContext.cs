@@ -48,9 +48,11 @@ public class PlayerContext : MonoBehaviour
     private float _bonusSpeed;
     private bool _enableSlideCooldown = false;
     private float _slideCooldownCounter = 0;
+    private bool _allowCoyoteTime = false;
 
     [Header("Miscellaneous")]
     [SerializeField] private BaseWeapon _currentWeapon;
+    public BaseWeapon GetCurrentWeapon { get { return _currentWeapon; }  set { _currentWeapon = value; } }
 
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
@@ -64,13 +66,59 @@ public class PlayerContext : MonoBehaviour
     [Header("Miscellaneous")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private GameObject _groundCheck;
+    public GameObject GetGroundTransform() { return _groundCheck; }
+
+    [SerializeField] private float _maxSlopeAngle = 30;
+    private RaycastHit _slopeHit;
+
 
     private bool _onGround()
     {
-        if (Physics.SphereCast(_groundCheck.transform.position, GROUND_CHECK_RADII, Vector3.down,
-            out RaycastHit _hit, GROUND_CHECK_ALLOWANCE, _groundLayer)) return Vector3.Angle(_hit.normal, Vector3.up) < 20f;
+        Vector3 origin = _groundCheck.transform.position;
+
+        Vector3[] offsets = new Vector3[]
+        {
+            Vector3.zero,
+            new Vector3(0.4f, 0, 0.4f),
+            new Vector3(-0.4f, 0, 0.4f),
+            new Vector3(0.4f, 0, -0.4f),
+            new Vector3(-0.4f, 0, -0.4f),
+        };
+
+        foreach (var offset in offsets)
+        {
+            if (Physics.Raycast(origin + offset, Vector3.down, out RaycastHit hit,
+                GROUND_CHECK_ALLOWANCE, _groundLayer))
+            {
+                if (Vector3.Angle(hit.normal, Vector3.up) < 20f)
+                    return true;
+            }
+        }
 
         return false;
+    }
+
+    private bool _onSlope()
+    {
+        BoxCollider col = GetComponent<BoxCollider>();
+
+        float rayLength = col.bounds.extents.y + 0.5f; // always reaches ground
+        Vector3 origin = col.bounds.center;
+
+        //Debug.DrawRay(origin, Vector3.down * rayLength, Color.red);
+
+        if (Physics.Raycast(origin, Vector3.down, out _slopeHit, rayLength, _groundLayer))
+        {
+            float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+            return angle <= _maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    private Vector3 _getSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(_moveDir, _slopeHit.normal).normalized;
     }
 
     private bool _isDead()
@@ -124,12 +172,18 @@ public class PlayerContext : MonoBehaviour
     public float GetFallMultiplier { get { return _fallMultiplier; } }
     public float GetLowJumpMultiplier { get { return _lowJumpMultiplier; } }
     public float GetJumpForce { get { return _jumpForce; } }
+    public bool IsCoyoteTime { get { return _allowCoyoteTime; } set { _allowCoyoteTime = value; } }
 
     // Sliding Variables
     public InputAction GetSlideInput { get { return _slideAction; } }
     public float GetSlideTime { get { return _slideTime; } }
     public float GetSlideBoost { get { return _slideBoost; } }
     public bool GetSlideCooldown { get { return _enableSlideCooldown; } set { _enableSlideCooldown = value; } }
+
+    // Slope Variables
+    public bool IsOnSlope { get { return _onSlope(); } }
+    public Vector3 GetSlopeMoveDirection { get { return _getSlopeMoveDirection(); }  }
+    public RaycastHit GetSlopeHit { get { return _slopeHit; } }
 
     #endregion
 

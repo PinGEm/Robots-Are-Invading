@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class JumpingState : BaseState
 {
+    private const float COYOTE_TIME_DISABLE = 0.5f;
+
     private bool _jumpHeld;
+
+    private float _coyoteDisableCounter;
 
     public JumpingState(PlayerContext context, StateInitialization stateInitializer) : base(context, stateInitializer) {
         InitializeSubState();
@@ -35,6 +39,7 @@ public class JumpingState : BaseState
 
     public override void ExitState()
     {
+        _ctx.IsCoyoteTime = false;
         _ctx.BonusSpeed -= 1;
     }
 
@@ -69,7 +74,17 @@ public class JumpingState : BaseState
     public override void UpdateState()
     {
         _jumpHeld = _ctx.GetJumpInput.IsPressed();
+
+        if(!_jumpHeld) _ctx.IsCoyoteTime = false;
+
         CheckSwitchState();
+
+        if (_ctx.IsCoyoteTime) _coyoteDisableCounter += Time.deltaTime;
+
+        if (_coyoteDisableCounter > COYOTE_TIME_DISABLE)
+        {
+            _ctx.IsCoyoteTime = false;
+        }
     }
 
     void ApplyUpWardsForce()
