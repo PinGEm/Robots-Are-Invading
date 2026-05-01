@@ -289,9 +289,9 @@ MonoBehaviour:
   _playerMaxHP: 100
   _playerSpeed: 11
   _jumpForce: 10.65
-  _dashForce: 22
+  _dashForce: 25
   _dashTime: 0.2
-  _slideBoost: 25
+  _slideBoost: 19
   _slideTime: 0.2
   _fallMultiplier: 3.15
   _lowJumpMultiplier: 4
@@ -309,6 +309,7 @@ MonoBehaviour:
     m_Bits: 64
   _groundCheck: {fileID: 94714533274143935}
   _maxSlopeAngle: 40
+  _postProcessingVolume: {fileID: 5608552568798095727}
   _impulseSource: {fileID: 5376976828783885596}
 --- !u!1 &5038116450832246445
 GameObject:
@@ -460,6 +461,7 @@ GameObject:
   - component: {fileID: 3587630991298258125}
   - component: {fileID: 5376976828783885596}
   - component: {fileID: 9080803634322641361}
+  - component: {fileID: 5608552568798095727}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -616,6 +618,23 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &5608552568798095727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151015054122555624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 756c6d3b6da25394fbdc3c6467b1f4af, type: 2}
 --- !u!1 &6226267828304084799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,11 +2021,11 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.5235849, g: 1, b: 0.9294078, a: 1}
-        key1: {r: 0.75538445, g: 0.9030986, b: 0.9150943, a: 0.7058824}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.5235849, g: 1, b: 0.9294078, a: 0.654902}
+        key1: {r: 0.75538445, g: 0.9030986, b: 0.9150943, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0.7058824}
+        key3: {r: 0, g: 0, b: 0, a: 0.7058824}
+        key4: {r: 0, g: 0, b: 0, a: 0.7058824}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
@@ -2019,17 +2038,17 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
+        atime1: 7325
+        atime2: 65535
+        atime3: 65535
+        atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

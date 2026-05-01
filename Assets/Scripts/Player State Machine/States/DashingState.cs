@@ -41,6 +41,8 @@ public class DashingState : BaseState
     {
         _ctx._dashEffect.Play();
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV + 10;
+        _ctx.GetMotionBlur.intensity.value = 0.8f;
+
         _ctx.SpeedQueue.Add(Tuple.Create(_dashSpeed, _dashTime));
         ApplyDashForce();
         SFXManager.instance.PlayRandomSoundFXClip(_ctx._dashingSFX, _ctx.transform, 0.725f);
@@ -49,7 +51,9 @@ public class DashingState : BaseState
 
     public override void ExitState()
     {
+        _ctx.GetMotionBlur.intensity.value = 0f;
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV;
+        
         Debug.Log("Exiting Dash State");
         _ctx.GetRigidbody.linearVelocity = Vector3.zero;
     }

@@ -31,6 +31,7 @@ public class SlidingState : BaseState
 
     public override void EnterState()
     {
+        _ctx.GetMotionBlur.intensity.value = 0.3f;
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV + 5;
         _ctx.SpeedQueue.Add(Tuple.Create(_slideSpeed, _slideTime));
 
@@ -44,7 +45,9 @@ public class SlidingState : BaseState
 
     public override void ExitState()
     {
+        _ctx.GetMotionBlur.intensity.value = 0f;
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV;
+
         Debug.Log("exiting sliding state");
         _slideCounter = _ctx.GetSlideTime;
 

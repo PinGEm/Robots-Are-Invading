@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerContext : MonoBehaviour
 {
@@ -80,6 +83,11 @@ public class PlayerContext : MonoBehaviour
     private float _originalFieldOfView = 0;
     public float GetOriginalFOV { get { return _originalFieldOfView; } }
     private RaycastHit _slopeHit;
+
+    [SerializeField] private Volume _postProcessingVolume;
+    private UnityEngine.Rendering.Universal.MotionBlur _motionBlur;
+
+    public UnityEngine.Rendering.Universal.MotionBlur GetMotionBlur { get { return _motionBlur; } }
 
 
     private bool _onGround()
@@ -234,6 +242,8 @@ public class PlayerContext : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        _postProcessingVolume.profile.TryGet(out _motionBlur);
     }
 
     void Update()
