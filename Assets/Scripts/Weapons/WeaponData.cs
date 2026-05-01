@@ -31,6 +31,6 @@ public class WeaponData : ScriptableObject
     public float spreadAngle = 0f;
     public int pellets = 1;
 
-    [Header("Burst")]
+    [Header("Audio Effects")]
     public AudioClip[] gunSFX;
 }
