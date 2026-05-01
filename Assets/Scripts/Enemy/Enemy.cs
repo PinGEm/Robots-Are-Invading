@@ -39,6 +39,12 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        CanSeePlayer();
+        currentState = stateMachine.activeState.ToString();
+    }
+
     public void Damage(float damageAmount)
     {
         hasTakenDamage = true;
@@ -70,10 +76,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void SetPath(EnemyPath newPath)
     {
-        CanSeePlayer();
-        currentState = stateMachine.activeState.ToString();
+        path = newPath;
     }
 
     public bool CanSeePlayer()
