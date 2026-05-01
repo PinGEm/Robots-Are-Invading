@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b471e539f0618be4c996df5835c35c73, type: 3}
   m_Name: Basic Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: 
+  weaponName: Remmington
   fireMode: 0
-  damage: 10
-  fireRate: 5
-  range: 100
-  magazineSize: 30
-  reloadTime: 2
+  damage: 15
+  fireRate: 2.5
+  range: 45
+  magazineSize: 8
+  reloadTime: 3
   burstCount: 3
-  spreadAngle: 0
-  pellets: 1
+  spreadAngle: 45
+  pellets: 6
   maxPenetrationTargets: 1
-  gunSFX: []
+  gunSFX:
+  - {fileID: 8300000, guid: bb2d4bfa7f545e848859b648fc87945f, type: 3}

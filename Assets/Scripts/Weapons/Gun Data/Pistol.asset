@@ -18,7 +18,7 @@ MonoBehaviour:
   fireRate: 5
   range: 100
   magazineSize: 8
-  reloadTime: 2
+  reloadTime: 1.5
   burstCount: 3
   spreadAngle: 0
   pellets: 1

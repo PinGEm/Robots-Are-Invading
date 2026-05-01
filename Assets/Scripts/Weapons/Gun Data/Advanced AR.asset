@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b471e539f0618be4c996df5835c35c73, type: 3}
   m_Name: Advanced AR
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: 
-  fireMode: 0
-  damage: 10
-  fireRate: 5
+  weaponName: M4A1
+  fireMode: 1
+  damage: 25
+  fireRate: 12
   range: 100
-  magazineSize: 30
-  reloadTime: 2
+  magazineSize: 45
+  reloadTime: 1.5
   burstCount: 3
   spreadAngle: 0
   pellets: 1

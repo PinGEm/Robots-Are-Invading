@@ -729,6 +729,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4720575813802960305}
+  - component: {fileID: -8744194468491256837}
+  - component: {fileID: -4838274421315765648}
   m_Layer: 7
   m_Name: Advanced Shotgun
   m_TagString: Untagged
@@ -761,6 +763,73 @@ Transform:
   - {fileID: 5292083278009972002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 12.8, z: 0}
+--- !u!114 &-8744194468491256837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509089209819780816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 1
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.15
+    ImpulseType: 1
+    DissipationRate: 0.15
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 1
+    PropagationSpeed: 343
+  DefaultVelocity: {x: -0.1, y: -0.075, z: 0.1}
+--- !u!114 &-4838274421315765648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509089209819780816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495575f7633ec944b87286ca7f320eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shotgun
+  _data: {fileID: 11400000, guid: 134f54234feb02b4994ec932c1889532, type: 2}
+  _firePoint: {fileID: 0}
 --- !u!1 &8652629731023485125
 GameObject:
   m_ObjectHideFlags: 0

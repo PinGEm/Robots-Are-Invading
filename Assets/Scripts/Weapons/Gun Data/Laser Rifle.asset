@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b471e539f0618be4c996df5835c35c73, type: 3}
   m_Name: Laser Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: 
+  weaponName: Plasma Rifle
   fireMode: 0
-  damage: 10
-  fireRate: 5
-  range: 100
-  magazineSize: 30
-  reloadTime: 2
+  damage: 45
+  fireRate: 2
+  range: 120
+  magazineSize: 999
+  reloadTime: 0
   burstCount: 3
   spreadAngle: 0
   pellets: 1

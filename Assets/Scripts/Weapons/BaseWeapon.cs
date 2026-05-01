@@ -7,10 +7,11 @@ public abstract class BaseWeapon : MonoBehaviour
     [Header("Weapon Data")]
     [SerializeField] protected WeaponData _data;
     [SerializeField] protected Transform _firePoint;
-    [SerializeField] protected AudioClip[] _shootSFX;
 
     private Vector3 _originalScale;
     private Vector3 _originalLocalPosition;
+
+    private bool _isBurstShotAllowed = false;
 
     protected int _currentAmmo;
     protected int _reserveAmmo;
@@ -25,6 +26,7 @@ public abstract class BaseWeapon : MonoBehaviour
         Debug.Log(_originalScale);
         Initialize();
     }
+
 
     protected virtual void LateUpdate()
     {
@@ -47,6 +49,21 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual void Initialize()
     {
+        GameObject target = GameObject.FindWithTag("Hit Target");
+
+        if (target == null)
+        {
+            Debug.LogWarning("Could not find fire point");
+            return;
+        }
+
+        _firePoint = target.transform;
+
+        if (_firePoint == null)
+        {
+            Debug.LogWarning("Could not get the transform component from the game object");
+        }
+
         _currentAmmo = _data.magazineSize;
     }
 
@@ -65,7 +82,7 @@ public abstract class BaseWeapon : MonoBehaviour
                 break;
 
             case FireMode.Burst:
-                StartCoroutine(BurstFire());
+                if(!_isBurstShotAllowed) StartCoroutine(BurstFire());
                 break;
         }
     }
@@ -105,15 +122,18 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual IEnumerator BurstFire()
     {
+        _isBurstShotAllowed = true;
+
         for (int i = 0; i < _data.burstCount; i++)
         {
             if (_currentAmmo <= 0) break;
 
             Fire();
-            yield return new WaitForSeconds(1f / _data.fireRate);
+            yield return new WaitForSeconds(1f / _data.burstFireRate);
         }
 
         _nextTimeToFire = Time.time + 1f / _data.fireRate;
+        _isBurstShotAllowed = false;
     }
 
     public virtual IEnumerator Reload()

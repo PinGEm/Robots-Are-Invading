@@ -9,7 +9,7 @@ public class Pistol : BaseWeapon
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, _data.range))
         {
-            Debug.Log("Hit: " + hit.transform.name);
+            Debug.Log("Hit w/ Pistol: " + hit.transform.name);
         }
     }
 }

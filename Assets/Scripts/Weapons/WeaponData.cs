@@ -25,6 +25,7 @@ public class WeaponData : ScriptableObject
 
     [Header("Burst")]
     public int burstCount = 3;
+    public int burstFireRate = 9;
 
     [Header("Spread")]
     public float spreadAngle = 0f;
