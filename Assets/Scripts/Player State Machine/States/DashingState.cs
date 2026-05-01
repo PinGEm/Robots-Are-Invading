@@ -10,8 +10,8 @@ public class DashingState : BaseState
     private float _dashCounter;
     private float _dashAmplifier = 3f;
 
-    private float _dashSpeed = 1.5f;
-    private float _dashTime = 1.15f;
+    private float _dashSpeed = 1.75f;
+    private float _dashTime = 2.25f;
 
     private float _slideBufferCounter = 0;
 

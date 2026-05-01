@@ -5758,6 +5758,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &773300602 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 576368848357873449, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+  m_PrefabInstance: {fileID: 6382102551366715891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &817418434
 GameObject:
   m_ObjectHideFlags: 0
@@ -12026,6 +12031,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 5795451299475730527, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: _firePoint
+      value: 
+      objectReference: {fileID: 773300602}
     - target: {fileID: 5795451299475730527, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: _projectileForce
       value: 50

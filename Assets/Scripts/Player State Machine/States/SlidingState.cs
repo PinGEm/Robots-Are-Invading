@@ -8,8 +8,8 @@ public class SlidingState : BaseState
     private float _downwardsForce = 0.1f;
     private float _slideCounter;
 
-    private float _slideSpeed = 0.7f;
-    private float _slideTime = 1f;
+    private float _slideSpeed = 0.9f;
+    private float _slideTime = 1.65f;
 
     public override void CheckSwitchState()
     {
