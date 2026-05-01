@@ -164,8 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pistol
   _data: {fileID: 11400000, guid: 82c72b62a4cee934a973e9fcb7863f70, type: 2}
   _firePoint: {fileID: 2209283681784623526}
-  _projectilePrefab: {fileID: 3575611928538805115, guid: 745a87995944ab94caa447ec2061dbc4, type: 3}
-  _projectileForce: 5
+  _shootSFX:
+  - {fileID: 8300000, guid: a00afed8ff3ee7b4db3784b22a768e31, type: 3}
 --- !u!1 &6650470630134122455
 GameObject:
   m_ObjectHideFlags: 0

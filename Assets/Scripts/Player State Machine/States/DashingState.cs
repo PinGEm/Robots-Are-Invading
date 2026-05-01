@@ -13,7 +13,6 @@ public class DashingState : BaseState
     private float _dashSpeed = 1.5f;
     private float _dashTime = 1.15f;
 
-
     private float _slideBufferCounter = 0;
 
 
@@ -40,6 +39,8 @@ public class DashingState : BaseState
 
     public override void EnterState()
     {
+        _ctx._dashEffect.Play();
+        _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV + 10;
         _ctx.SpeedQueue.Add(Tuple.Create(_dashSpeed, _dashTime));
         ApplyDashForce();
         SFXManager.instance.PlayRandomSoundFXClip(_ctx._dashingSFX, _ctx.transform, 0.725f);
@@ -48,6 +49,7 @@ public class DashingState : BaseState
 
     public override void ExitState()
     {
+        _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV;
         Debug.Log("Exiting Dash State");
         _ctx.GetRigidbody.linearVelocity = Vector3.zero;
     }

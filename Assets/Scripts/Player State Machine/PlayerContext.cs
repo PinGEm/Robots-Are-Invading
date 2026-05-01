@@ -57,10 +57,15 @@ public class PlayerContext : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip[] _dashingSFX;
 
+    [Header("Particle Effects")]
+    public ParticleSystem _dashEffect;
+
     [Header("Sensitivity")]
     [SerializeField] private float _rotateSpeed_X = 0.4f;
     [SerializeField] private float _rotateSpeed_Y = 0.5f;
     [SerializeField] Transform _cameraPoint;
+    [SerializeField] private CinemachineCamera _camera;
+    public CinemachineCamera GetCamera { get { return _camera; } }
     private float _yaw;
     private float _pitch;
     private float minPitch = -80f;
@@ -72,6 +77,8 @@ public class PlayerContext : MonoBehaviour
     public GameObject GetGroundTransform() { return _groundCheck; }
 
     [SerializeField] private float _maxSlopeAngle = 30;
+    private float _originalFieldOfView = 0;
+    public float GetOriginalFOV { get { return _originalFieldOfView; } }
     private RaycastHit _slopeHit;
 
 
@@ -203,6 +210,7 @@ public class PlayerContext : MonoBehaviour
     private void Awake()
     {
         // Initialize Components
+        _originalFieldOfView = _camera.Lens.FieldOfView;
         _rb = GetComponent<Rigidbody>();
         _currentPlayerHP = _playerMaxHP;
         SpeedQueue = _speedQueue;
