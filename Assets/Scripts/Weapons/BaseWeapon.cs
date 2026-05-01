@@ -48,7 +48,6 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void Initialize()
     {
         _currentAmmo = _data.magazineSize;
-        _reserveAmmo = _data.maxReserveAmmo;
     }
 
     public virtual void TryFire()

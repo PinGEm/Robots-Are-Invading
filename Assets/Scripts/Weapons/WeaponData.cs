@@ -21,7 +21,6 @@ public class WeaponData : ScriptableObject
 
     [Header("Ammo")]
     public int magazineSize = 30;
-    public int maxReserveAmmo = 120;
     public float reloadTime = 2f;
 
     [Header("Burst")]
@@ -30,6 +29,9 @@ public class WeaponData : ScriptableObject
     [Header("Spread")]
     public float spreadAngle = 0f;
     public int pellets = 1;
+
+    [Header("Penetration")]
+    public int maxPenetrationTargets = 1;
 
     [Header("Audio Effects")]
     public AudioClip[] gunSFX;

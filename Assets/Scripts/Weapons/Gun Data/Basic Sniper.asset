@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b471e539f0618be4c996df5835c35c73, type: 3}
-  m_Name: Pistol
+  m_Name: Basic Sniper
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: M1911
+  weaponName: 
   fireMode: 0
-  damage: 60
+  damage: 10
   fireRate: 5
   range: 100
-  magazineSize: 8
+  magazineSize: 30
   reloadTime: 2
   burstCount: 3
   spreadAngle: 0
   pellets: 1
   maxPenetrationTargets: 1
-  gunSFX:
-  - {fileID: 8300000, guid: a00afed8ff3ee7b4db3784b22a768e31, type: 3}
+  gunSFX: []
