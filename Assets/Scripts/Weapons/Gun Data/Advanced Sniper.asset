@@ -24,6 +24,6 @@ MonoBehaviour:
   burstFireRate: 9
   spreadAngle: 0
   pellets: 1
-  maxPenetrationTargets: 4
+  maxPenetrationTargets: 10
   gunSFX:
   - {fileID: 8300000, guid: 7afca379244889644923379eaeda80ea, type: 3}

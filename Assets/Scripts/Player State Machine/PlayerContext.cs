@@ -55,6 +55,8 @@ public class PlayerContext : MonoBehaviour
 
     [Header("Gun")]
     [SerializeField] private BaseWeapon _currentWeapon;
+    [SerializeField] private GameObject[] _weaponList;
+    public GameObject[] GetAllWeapons { get { return _weaponList; } }
     public BaseWeapon GetCurrentWeapon { get { return _currentWeapon; }  set { _currentWeapon = value; } }
 
     [Header("Audio Clips")]

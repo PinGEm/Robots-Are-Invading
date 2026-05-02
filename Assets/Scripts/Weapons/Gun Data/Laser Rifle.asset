@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: Plasma Rifle
   fireMode: 1
   damage: 45
-  fireRate: 0.9
+  fireRate: 1
   range: 120
   kickBackForce: 0
   magazineSize: 9999
@@ -24,6 +24,6 @@ MonoBehaviour:
   burstFireRate: 9
   spreadAngle: 0
   pellets: 1
-  maxPenetrationTargets: 1
+  maxPenetrationTargets: 8
   gunSFX:
   - {fileID: 8300000, guid: 3bca8b51241282d41bdd714d057b0b92, type: 3}
