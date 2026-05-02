@@ -17,10 +17,13 @@ MonoBehaviour:
   damage: 100
   fireRate: 1.5
   range: 170
+  kickBackForce: 60
   magazineSize: 9
   reloadTime: 3
   burstCount: 3
+  burstFireRate: 9
   spreadAngle: 0
   pellets: 1
   maxPenetrationTargets: 4
-  gunSFX: []
+  gunSFX:
+  - {fileID: 8300000, guid: 7afca379244889644923379eaeda80ea, type: 3}

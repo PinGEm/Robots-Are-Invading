@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 4621426661119960567}
   - component: {fileID: 2976604599306641258}
   - component: {fileID: 1610501065045149070}
+  - component: {fileID: 6421322378581177471}
   m_Layer: 7
   m_Name: Advanced Sniper
   m_TagString: Untagged
@@ -547,6 +548,20 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6421322378581177471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862690933172932560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6bc622413fa064cadd2dbcf8d25272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sniper
+  _data: {fileID: 11400000, guid: d9822dab92fc7ec4e9aa89fda7550c38, type: 2}
+  _firePoint: {fileID: 0}
 --- !u!1 &6290635929968540981
 GameObject:
   m_ObjectHideFlags: 0

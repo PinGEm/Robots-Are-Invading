@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: Laser Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Plasma Rifle
-  fireMode: 0
+  fireMode: 1
   damage: 45
-  fireRate: 2
+  fireRate: 0.9
   range: 120
-  magazineSize: 999
+  kickBackForce: 0
+  magazineSize: 9999
   reloadTime: 0
   burstCount: 3
+  burstFireRate: 9
   spreadAngle: 0
   pellets: 1
   maxPenetrationTargets: 1
-  gunSFX: []
+  gunSFX:
+  - {fileID: 8300000, guid: 3bca8b51241282d41bdd714d057b0b92, type: 3}

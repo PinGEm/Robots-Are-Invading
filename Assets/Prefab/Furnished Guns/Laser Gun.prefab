@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8953136448859606621}
   - component: {fileID: 5841345471163658207}
   - component: {fileID: 6396804900424415881}
+  - component: {fileID: 4467364413744892093}
   m_Layer: 7
   m_Name: Laser Gun
   m_TagString: Untagged
@@ -90,3 +91,17 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4467364413744892093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794927625132999800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396a303865baa5040952f945f7057c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AssaultRifle
+  _data: {fileID: 11400000, guid: bd98506bb57f98746a1d480985b75d08, type: 2}
+  _firePoint: {fileID: 0}
