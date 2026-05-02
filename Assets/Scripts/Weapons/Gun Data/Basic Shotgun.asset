@@ -17,9 +17,11 @@ MonoBehaviour:
   damage: 15
   fireRate: 2.5
   range: 45
+  kickBackForce: 30
   magazineSize: 8
   reloadTime: 3
   burstCount: 3
+  burstFireRate: 9
   spreadAngle: 45
   pellets: 6
   maxPenetrationTargets: 1

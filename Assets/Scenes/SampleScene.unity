@@ -2445,6 +2445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Semi-Auto Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 3252790704857599602, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7428969526763845437, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.47
@@ -12105,6 +12109,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1064621577478809664, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1213686584830398460, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Name
       value: Pistol
@@ -12256,6 +12264,10 @@ PrefabInstance:
     - target: {fileID: 6185139565891979150, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289569880567021244, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_Name
+      value: Dash Lines
       objectReference: {fileID: 0}
     - target: {fileID: 8424996267991637289, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_LocalPosition.x

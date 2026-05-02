@@ -18,6 +18,7 @@ public class WeaponData : ScriptableObject
     public int damage = 10;
     public float fireRate = 5f;
     public float range = 100f;
+    public float kickBackForce = 0f;
 
     [Header("Ammo")]
     public int magazineSize = 30;

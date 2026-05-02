@@ -39,6 +39,7 @@ public class DashingState : BaseState
 
     public override void EnterState()
     {
+        _ctx._dashOverlay.SetActive(true);
         _ctx._dashEffect.Play();
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV + 10;
         _ctx.GetMotionBlur.intensity.value = 0.8f;
@@ -51,6 +52,7 @@ public class DashingState : BaseState
 
     public override void ExitState()
     {
+        _ctx._dashOverlay.SetActive(false);
         _ctx.GetMotionBlur.intensity.value = 0f;
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV;
         

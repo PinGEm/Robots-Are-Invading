@@ -61,6 +61,7 @@ public class PlayerContext : MonoBehaviour
     public AudioClip[] _dashingSFX;
 
     [Header("Particle Effects")]
+    public GameObject _dashOverlay;
     public ParticleSystem _dashEffect;
 
     [Header("Sensitivity")]

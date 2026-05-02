@@ -18,6 +18,8 @@ public abstract class BaseWeapon : MonoBehaviour
     protected float _nextTimeToFire;
     protected bool _isReloading;
 
+    private PlayerContext _player;
+
     protected virtual void Awake()
     {
         _originalScale = this.transform.localScale;
@@ -64,6 +66,8 @@ public abstract class BaseWeapon : MonoBehaviour
             Debug.LogWarning("Could not get the transform component from the game object");
         }
 
+        _player = GameObject.FindWithTag("Player").GetComponent<PlayerContext>();
+
         _currentAmmo = _data.magazineSize;
     }
 
@@ -91,12 +95,15 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         Debug.Log("firing gun!");
 
-        SFXManager.instance.PlayRandomSoundFXClip(_data.gunSFX, transform);
+        if (_data.fireMode != FireMode.Burst) SFXManager.instance.PlayRandomSoundFXClip(_data.gunSFX, transform);
+        else SFXManager.instance.PlayRandomSoundFXClip(_data.gunSFX, transform, 1f / _data.burstCount);
 
         _currentAmmo--;
 
         for (int i = 0; i < _data.pellets; i++)
         {
+            if (_data.kickBackForce != 0) _player.GetRigidbody.AddForce(-_player.transform.forward * _data.kickBackForce, ForceMode.Impulse);
+
             Vector3 direction = GetSpreadDirection();
             ExecuteShot(direction);
         }
