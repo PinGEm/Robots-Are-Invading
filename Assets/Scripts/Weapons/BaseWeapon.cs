@@ -8,6 +8,8 @@ public abstract class BaseWeapon : MonoBehaviour
     [SerializeField] protected WeaponData _data;
     [SerializeField] protected Transform _firePoint;
 
+    public string GetFireMode { get { return _data.fireMode.ToString(); } }
+
     private Vector3 _originalScale;
     private Vector3 _originalLocalPosition;
 

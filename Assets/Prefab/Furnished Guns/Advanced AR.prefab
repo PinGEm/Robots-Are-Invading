@@ -122,6 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9084672784383371013}
+  - component: {fileID: 578728575376416332}
   m_Layer: 7
   m_Name: Advanced AR
   m_TagString: Untagged
@@ -151,6 +152,20 @@ Transform:
   - {fileID: 6279248560744382168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 98.57, z: 0}
+--- !u!114 &578728575376416332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521003073560140649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396a303865baa5040952f945f7057c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AssaultRifle
+  _data: {fileID: 11400000, guid: 25ceb31f55af6614796a87f294b71cdc, type: 2}
+  _firePoint: {fileID: 0}
 --- !u!1 &5690009102832824049
 GameObject:
   m_ObjectHideFlags: 0

@@ -258,11 +258,16 @@ public class PlayerContext : MonoBehaviour
 
         UpdateYawPitch();
 
-        if (_attackAction.WasPressedThisFrame())
+        if (_currentWeapon != null)
         {
-            if (_currentWeapon != null)
+            switch (_currentWeapon.GetFireMode)
             {
-                _currentWeapon.TryFire();
+                case "Auto":
+                    if (_attackAction.IsPressed()) _currentWeapon.TryFire();
+                    break;
+                default:
+                    if (_attackAction.WasPressedThisFrame()) _currentWeapon.TryFire();
+                    break;
             }
         }
 
