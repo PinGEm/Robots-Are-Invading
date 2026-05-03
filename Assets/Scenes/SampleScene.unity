@@ -12252,6 +12252,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1038735039763012087, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1064621577478809664, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -12267,6 +12271,10 @@ PrefabInstance:
     - target: {fileID: 1213686584830398460, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279589984467436293, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1309664129178326427, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -12419,6 +12427,18 @@ PrefabInstance:
     - target: {fileID: 6667147043026665311, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733921962508443665, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: DefaultVelocity.x
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733921962508443665, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: DefaultVelocity.y
+      value: -0.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733921962508443665, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: DefaultVelocity.z
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 8289569880567021244, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Name

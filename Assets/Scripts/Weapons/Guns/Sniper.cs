@@ -1,10 +1,27 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Sniper : BaseWeapon
 {
+    private CinemachineImpulseSource _playerShake;
+
+    protected override void GunAwake()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+
+        PlayerContext context = player.GetComponent<PlayerContext>();
+
+        _playerShake = context.GetImpulseSource;
+
+        if (_playerShake != null) Debug.Log("Successfully found impulse source");
+        else Debug.Log("Did not find impulse source");
+    }
+
     public override void ExecuteShot(Vector3 direction)
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        _impulseSource.GenerateImpulse(1.5f);
+        _playerShake.GenerateImpulse(1f);
 
         RaycastHit[] hits = Physics.RaycastAll(ray.origin, ray.direction, _data.range);
 

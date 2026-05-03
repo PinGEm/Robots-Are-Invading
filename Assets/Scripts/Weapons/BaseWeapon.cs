@@ -38,8 +38,13 @@ public abstract class BaseWeapon : MonoBehaviour
 
         Debug.Log(_originalScale);
         Initialize();
+        GunAwake();
     }
 
+    protected virtual void GunAwake()
+    {
+
+    }
 
     protected virtual void LateUpdate()
     {

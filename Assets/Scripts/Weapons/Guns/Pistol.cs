@@ -5,7 +5,8 @@ public class Pistol : BaseWeapon
     public override void ExecuteShot(Vector3 direction)
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        
+        _impulseSource.GenerateImpulse(1f);
+
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, _data.range))
         {
