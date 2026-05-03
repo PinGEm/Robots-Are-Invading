@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
 
+[RequireComponent(typeof(CinemachineImpulseSource))]
 public abstract class BaseWeapon : MonoBehaviour
 {
     // Weapon Variables
@@ -21,6 +23,13 @@ public abstract class BaseWeapon : MonoBehaviour
     protected bool _isReloading;
 
     private PlayerContext _player;
+
+    protected CinemachineImpulseSource _impulseSource;
+
+    private void Start()
+    {
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     protected virtual void Awake()
     {

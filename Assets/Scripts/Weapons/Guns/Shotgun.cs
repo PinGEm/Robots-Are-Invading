@@ -1,16 +1,8 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-[RequireComponent(typeof(CinemachineImpulseSource))]
 public class Shotgun : BaseWeapon
 {
-    private CinemachineImpulseSource _impulseSource;
-
-    private void Start()
-    {
-        _impulseSource = GetComponent<CinemachineImpulseSource>();
-    }
-
     public override void ExecuteShot(Vector3 direction)
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));

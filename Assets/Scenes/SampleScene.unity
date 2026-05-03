@@ -8393,9 +8393,13 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: f6f6522e4c3bd254bb6e8e32e4497100, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8198905c90d62f94fa1786548559a651, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12352,6 +12356,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4057930996611502450, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4267436671422899920, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -12388,6 +12396,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 5422196682987696668, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5795451299475730527, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: _firePoint
       value: 
@@ -12399,6 +12411,14 @@ PrefabInstance:
     - target: {fileID: 6185139565891979150, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338646481861942659, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667147043026665311, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8289569880567021244, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Name

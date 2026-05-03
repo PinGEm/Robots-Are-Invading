@@ -5915,6 +5915,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: DefaultVelocity.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: DefaultVelocity.y
+      value: -0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: DefaultVelocity.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseShape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: ImpulseDefinition.DissipationRate
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882324938973848659, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: ImpulseDefinition.DissipationDistance
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6082,6 +6114,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: DefaultVelocity.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: DefaultVelocity.y
+      value: -0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: DefaultVelocity.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseShape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: ImpulseDefinition.DissipationRate
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100655702233219409, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: ImpulseDefinition.DissipationDistance
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 2535531761278180192, guid: b93667bbcf82321459894a1570a24f25, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -6303,6 +6367,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: DefaultVelocity.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: DefaultVelocity.y
+      value: -0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: DefaultVelocity.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseShape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: ImpulseDefinition.DissipationRate
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765015514534955671, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
+      propertyPath: ImpulseDefinition.DissipationDistance
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 8953136448859606621, guid: e7ff434ca162c9847a4c63f5625429ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.57
@@ -6508,6 +6604,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: DefaultVelocity.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: DefaultVelocity.y
+      value: -0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: DefaultVelocity.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseShape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: ImpulseDefinition.DissipationRate
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: ImpulseDefinition.ImpulseDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638809062061145604, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: ImpulseDefinition.DissipationDistance
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 5521003073560140649, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
       propertyPath: m_Name
       value: Advanced AR
