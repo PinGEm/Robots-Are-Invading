@@ -30,7 +30,7 @@ public class DashingState : BaseState
                 SwitchState(_init.Airborne());
             }
 
-            if (_ctx.GetSlideInput.IsPressed() && _slideBufferCounter <= SLIDE_BUFFER_CUTOFF && !_ctx.GetSlideCooldown)
+            if (_ctx.GetSlideInput.IsPressed() && _slideBufferCounter <= SLIDE_BUFFER_CUTOFF && !_ctx.GetSlideCooldown && _ctx.IsStaminaMovementAllowed == true)
             {
                 SwitchState(_init.Sliding());
             }
@@ -52,6 +52,8 @@ public class DashingState : BaseState
 
     public override void ExitState()
     {
+        _ctx.GetStaminaCount -= _ctx.GetDashDepletion;
+
         _ctx._dashOverlay.SetActive(false);
         _ctx.GetMotionBlur.intensity.value = 0f;
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV;

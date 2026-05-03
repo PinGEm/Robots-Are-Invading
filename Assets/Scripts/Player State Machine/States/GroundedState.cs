@@ -8,14 +8,17 @@ public class GroundedState : BaseState
 
     public override void CheckSwitchState()
     {
-        if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
+        if (_ctx.IsStaminaMovementAllowed == true)
         {
-            SwitchState(_init.Dashing());
-        }
+            if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
+            {
+                SwitchState(_init.Dashing());
+            }
 
-        if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
-        {
-            SwitchState(_init.Sliding());
+            if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
+            {
+                SwitchState(_init.Sliding());
+            }
         }
 
         if (_ctx.GetJumpInput.WasPressedThisFrame())

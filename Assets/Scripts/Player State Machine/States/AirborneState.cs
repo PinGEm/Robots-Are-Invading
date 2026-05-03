@@ -22,9 +22,17 @@ public class AirborneState : BaseState
             SwitchState(_init.Jumping());
         }
 
-        if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
+        if (_ctx.IsStaminaMovementAllowed == true)
         {
-            SwitchState(_init.Dashing());
+            if (_ctx.GetDashInput.WasPressedThisFrame() && _ctx.EnableDash)
+            {
+                SwitchState(_init.Dashing());
+            }
+
+            if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
+            {
+                SwitchState(_init.Sliding());
+            }
         }
 
         if ((_ctx.IsGrounded && !_enableJumpBuffer) || _ctx.IsOnSlope)
@@ -34,11 +42,6 @@ public class AirborneState : BaseState
         else if(_ctx.IsGrounded && _enableJumpBuffer)
         {
             SwitchState(_init.Jumping());
-        }
-
-        if (_ctx.GetSlideInput.WasPressedThisFrame() && !_ctx.GetSlideCooldown)
-        {
-            SwitchState(_init.Sliding());
         }
     }
 

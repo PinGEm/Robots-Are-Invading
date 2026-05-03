@@ -45,6 +45,8 @@ public class SlidingState : BaseState
 
     public override void ExitState()
     {
+        _ctx.GetStaminaCount -= _ctx.GetSlideDepletion;
+
         _ctx.GetMotionBlur.intensity.value = 0f;
         _ctx.GetCamera.Lens.FieldOfView = _ctx.GetOriginalFOV;
 

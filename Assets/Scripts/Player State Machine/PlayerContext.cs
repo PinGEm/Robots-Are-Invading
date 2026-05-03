@@ -34,6 +34,8 @@ public class PlayerContext : MonoBehaviour
     private const float GROUND_CHECK_RADII = 0.08f;
     private const float GROUND_CHECK_ALLOWANCE = 0.325f;
 
+    private const float MAX_STAMINA = 100;
+
     [Header("Movement Variables")]
     [SerializeField] private int _playerMaxHP = 100;
     [SerializeField] private int _playerSpeed = 11;
@@ -52,6 +54,18 @@ public class PlayerContext : MonoBehaviour
     private bool _enableSlideCooldown = false;
     private float _slideCooldownCounter = 0;
     private bool _allowCoyoteTime = false;
+
+    [Header("Stamina System")]
+    [SerializeField] private float _dashStamina = 20;
+    [SerializeField] private float _slideStamina = 10;
+    private float _staminaCount = MAX_STAMINA;
+    private bool _allowStaminaMovement = true;
+
+    public float GetMaxStamina { get { return MAX_STAMINA; } }
+    public float GetStaminaCount { get { return _staminaCount; } set { _staminaCount = value; } }
+    public float GetDashDepletion { get { return _dashStamina; } }
+    public float GetSlideDepletion { get { return _slideStamina; } }
+    public bool IsStaminaMovementAllowed { get { return _allowStaminaMovement; } set { _allowStaminaMovement = value; } }
 
     [Header("Gun")]
     [SerializeField] private BaseWeapon _currentWeapon;
