@@ -2509,8 +2509,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3520022594616326771, guid: 9cd6cec60e9a305419d76ce73b569411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 358388265}
+    - targetCorrespondingSourceObject: {fileID: 3520022594616326771, guid: 9cd6cec60e9a305419d76ce73b569411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 358388264}
   m_SourcePrefab: {fileID: 100100000, guid: 9cd6cec60e9a305419d76ce73b569411, type: 3}
+--- !u!1 &358388263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3520022594616326771, guid: 9cd6cec60e9a305419d76ce73b569411, type: 3}
+  m_PrefabInstance: {fileID: 358388262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &358388264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358388263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8299a1b991825e34996498c69ee85416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FullscreenManager
+  modeDropdown: {fileID: 0}
+--- !u!114 &358388265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358388263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbff343c4db38740bb7b362e00dafd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperSimpleResolution
+  resolutionDropdown: {fileID: 0}
 --- !u!1 &363682025
 GameObject:
   m_ObjectHideFlags: 0
