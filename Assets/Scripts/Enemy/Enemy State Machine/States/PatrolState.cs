@@ -31,7 +31,7 @@ public class PatrolState : EnemyBaseState
         if(enemy.Agent.remainingDistance < 0.2f)
         {
             waitTimer += Time.deltaTime;
-            if(waitTimer > 0.8f)
+            if(waitTimer > 0.5f)
             {
                 if(waypointIndex < enemy.path.waypoints.Count - 1)
                 {

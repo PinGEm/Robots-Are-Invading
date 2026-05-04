@@ -36,7 +36,7 @@ public class AttackState : EnemyBaseState
         else
         {
             losePlayerTimer += Time.deltaTime;
-            if(losePlayerTimer > 5)
+            if(losePlayerTimer > 0.1f)
             {
                 // Change to search state
                 stateMachine.ChangeState(new PatrolState());
