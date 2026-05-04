@@ -21,6 +21,7 @@ public class PlayerContext : MonoBehaviour
     private InputAction _slideAction;
     private InputAction _attackAction;
     private InputAction _meleeAction;
+    private InputAction _reloadAction;
     #endregion
 
     private const float MAX_FALL_SPEED = 30;
@@ -248,6 +249,7 @@ public class PlayerContext : MonoBehaviour
         _slideAction = InputSystem.actions.FindAction("Slide");
         _attackAction = InputSystem.actions.FindAction("Attack");
         _meleeAction = InputSystem.actions.FindAction("Melee");
+        _reloadAction = InputSystem.actions.FindAction("Reload");
 
         // Setup Current State
         _states = new StateInitialization(this);
@@ -285,6 +287,8 @@ public class PlayerContext : MonoBehaviour
                     if (_attackAction.WasPressedThisFrame()) _currentWeapon.TryFire();
                     break;
             }
+
+            if (_reloadAction.WasPressedThisFrame()) StartCoroutine(_currentWeapon.Reload());
         }
 
         if (_meleeAction.WasPressedThisFrame()) Debug.Log("Melee!");

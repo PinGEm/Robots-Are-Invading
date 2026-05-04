@@ -18,7 +18,6 @@ public abstract class BaseWeapon : MonoBehaviour
     private bool _isBurstShotAllowed = false;
 
     protected int _currentAmmo;
-    protected int _reserveAmmo;
     protected float _nextTimeToFire;
     protected bool _isReloading;
 
@@ -161,19 +160,16 @@ public abstract class BaseWeapon : MonoBehaviour
 
     public virtual IEnumerator Reload()
     {
+        Debug.Log("reloading");
+
         if (_isReloading) yield break;
         if (_currentAmmo == _data.magazineSize) yield break;
-        if (_reserveAmmo <= 0) yield break;
 
         _isReloading = true;
 
         yield return new WaitForSeconds(_data.reloadTime);
 
-        int ammoNeeded = _data.magazineSize - _currentAmmo;
-        int ammoToLoad = Mathf.Min(ammoNeeded, _reserveAmmo);
-
-        _currentAmmo += ammoToLoad;
-        _reserveAmmo -= ammoToLoad;
+        _currentAmmo = _data.magazineSize;
 
         _isReloading = false;
     }
