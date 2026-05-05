@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Net;
 
 public class Sniper : BaseWeapon
 {
@@ -22,27 +23,41 @@ public class Sniper : BaseWeapon
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         _impulseSource.GenerateImpulse(1.5f);
         _playerShake.GenerateImpulse(1f);
+        if (_muzzleFlash != null)
+            _muzzleFlash.Play();
 
         RaycastHit[] hits = Physics.RaycastAll(ray.origin, ray.direction, _data.range);
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        Vector3 endPoint = ray.origin + ray.direction * _data.range;
 
         Debug.DrawRay(ray.origin, ray.direction * _data.range, Color.white, 2f);
 
         float currentDamage = _data.damage;
         int penetrated = 0;
 
+
         foreach (RaycastHit hit in hits)
         {
-            Debug.Log($"Hit: {hit.transform.name} at distance {hit.distance}");
-
-            // Draw a small line showing the surface normal
-            Debug.DrawLine(hit.point, hit.point + hit.normal, Color.red, 2f);
-
-            penetrated++;
-
             if (penetrated >= _data.maxPenetrationTargets)
                 break;
 
-            // Damage Code Here
+            Enemy enemy = hit.collider.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.Damage(_data.damage); 
+            }
+
+            endPoint = hit.point;
+            penetrated++;
         }
+
+        // Show Laser
+        _laserEndPoint = endPoint;
+        _laserTimer = _laserDuration;
+        _isLaserActive = true;
+
+        _laserLine.enabled = true;
     }
 }

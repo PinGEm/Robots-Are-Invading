@@ -17,12 +17,12 @@ MonoBehaviour:
   damage: 20
   fireRate: 1.5
   range: 60
-  kickBackForce: 20
+  kickBackForce: 3
   magazineSize: 999
   reloadTime: 2
   burstCount: 3
   burstFireRate: 12
-  spreadAngle: 45
+  spreadAngle: 8
   pellets: 2
   maxPenetrationTargets: 1
   gunSFX:
