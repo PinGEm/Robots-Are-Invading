@@ -6268,9 +6268,25 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4598993802275138727, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4598993802275138727, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4598993802275138727, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 856706358879215721}
+    - target: {fileID: 4598993802275138727, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4598993802275138727, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 4598993802275138727, guid: 645442f18d193b14a96b4e06adacaf75, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -6514,9 +6530,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
     - target: {fileID: 2905840411412543134, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905840411412543134, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905840411412543134, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 799159032169548010}
+    - target: {fileID: 2905840411412543134, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905840411412543134, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2905840411412543134, guid: 9b3e17c983cc74242bc3438fd8ba2e93, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -6744,9 +6776,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8955996615149711383, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955996615149711383, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955996615149711383, guid: b93667bbcf82321459894a1570a24f25, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 622254356274019692}
+    - target: {fileID: 8955996615149711383, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955996615149711383, guid: b93667bbcf82321459894a1570a24f25, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8955996615149711383, guid: b93667bbcf82321459894a1570a24f25, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -6846,9 +6894,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
     - target: {fileID: -4838274421315765648, guid: 86f88e02abfd7c645853d9253d561e7c, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4838274421315765648, guid: 86f88e02abfd7c645853d9253d561e7c, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4838274421315765648, guid: 86f88e02abfd7c645853d9253d561e7c, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 536052027117778513}
+    - target: {fileID: -4838274421315765648, guid: 86f88e02abfd7c645853d9253d561e7c, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -4838274421315765648, guid: 86f88e02abfd7c645853d9253d561e7c, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: -4838274421315765648, guid: 86f88e02abfd7c645853d9253d561e7c, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -7000,9 +7064,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
     - target: {fileID: -4502823675600773963, guid: 103f2a1055c038747a7388800af35493, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4502823675600773963, guid: 103f2a1055c038747a7388800af35493, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4502823675600773963, guid: 103f2a1055c038747a7388800af35493, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 6771906757272877966}
+    - target: {fileID: -4502823675600773963, guid: 103f2a1055c038747a7388800af35493, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -4502823675600773963, guid: 103f2a1055c038747a7388800af35493, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: -4502823675600773963, guid: 103f2a1055c038747a7388800af35493, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -7436,9 +7516,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6421322378581177471, guid: 2d05b6f1bd91fe849aafafb0cdc1a720, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421322378581177471, guid: 2d05b6f1bd91fe849aafafb0cdc1a720, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421322378581177471, guid: 2d05b6f1bd91fe849aafafb0cdc1a720, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 4612984836107432932}
+    - target: {fileID: 6421322378581177471, guid: 2d05b6f1bd91fe849aafafb0cdc1a720, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421322378581177471, guid: 2d05b6f1bd91fe849aafafb0cdc1a720, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 6421322378581177471, guid: 2d05b6f1bd91fe849aafafb0cdc1a720, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -7490,9 +7586,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
     - target: {fileID: 2023323178917035655, guid: eabf8b3052d5c2a4aa5d23f74bd82f53, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023323178917035655, guid: eabf8b3052d5c2a4aa5d23f74bd82f53, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023323178917035655, guid: eabf8b3052d5c2a4aa5d23f74bd82f53, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 7062431005202689790}
+    - target: {fileID: 2023323178917035655, guid: eabf8b3052d5c2a4aa5d23f74bd82f53, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023323178917035655, guid: eabf8b3052d5c2a4aa5d23f74bd82f53, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2023323178917035655, guid: eabf8b3052d5c2a4aa5d23f74bd82f53, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
@@ -7648,9 +7760,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 8299451894301791562}
     m_Modifications:
     - target: {fileID: 578728575376416332, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 578728575376416332, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 578728575376416332, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 1428613481354399071}
+    - target: {fileID: 578728575376416332, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 578728575376416332, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 578728575376416332, guid: 5b710890936101f4f88bd97bf7173a58, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150

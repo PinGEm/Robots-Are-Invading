@@ -149,7 +149,23 @@ public abstract class BaseWeapon : MonoBehaviour
 
         for (int i = 0; i < _data.pellets; i++)
         {
-            if (_data.kickBackForce != 0) _player.GetRigidbody.AddForce(-_player.transform.forward * _data.kickBackForce, ForceMode.Impulse);
+            Vector3 shotDir = _firePoint.forward;
+
+            Vector3 horizontal = new Vector3(-shotDir.x, 0f, -shotDir.z);
+            horizontal = horizontal.normalized;
+
+            // vertical recoil based on aim angle
+            float verticalStrength = Mathf.Clamp01(-shotDir.y);
+            verticalStrength = Mathf.Pow(verticalStrength, 2.25f);
+
+            // scale it so it doesn't explode
+            float verticalForce = verticalStrength * _data.kickBackForce * 0.3f;
+
+            Vector3 recoil =
+                horizontal * _data.kickBackForce +
+                Vector3.up * verticalForce;
+
+            if (_data.kickBackForce != 0) _player.GetRigidbody.AddForce(recoil, ForceMode.Impulse);
 
             Vector3 direction = GetSpreadDirection();
             ExecuteShot(direction);
