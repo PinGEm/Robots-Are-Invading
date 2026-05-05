@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.Cinemachine;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 [RequireComponent(typeof(CinemachineImpulseSource))]
 [RequireComponent(typeof(LineRenderer))]
@@ -16,6 +17,13 @@ public abstract class BaseWeapon : MonoBehaviour
     [SerializeField] protected Transform _muzzlePoint;
     [SerializeField] protected float _laserDuration = 0.05f;
     [SerializeField] private float _tracerWidth = 0.02f;
+
+    [Header("Weapon Bob")]
+    [SerializeField] private float _minBobSpeed = 1f;
+    [SerializeField] private float _maxBobSpeed = 1.5f;
+    [SerializeField] private float _minBobAmount = 0.002f;
+    [SerializeField] private float _maxBobAmount = 0.004f;
+    private Vector3 _bobOffset;
 
     public string GetFireMode { get { return _data.fireMode.ToString(); } }
 
@@ -73,35 +81,19 @@ public abstract class BaseWeapon : MonoBehaviour
             _originalScale.z / parentScale.z
         );
 
-        // Fix position
-        transform.localPosition = new Vector3(
+        // --- 2. COMPUTE BASE POSITION (scaled correctly) ---
+        Vector3 basePosition = new Vector3(
             _originalLocalPosition.x / parentScale.x,
             _originalLocalPosition.y / parentScale.y,
             _originalLocalPosition.z / parentScale.z
         );
 
 
-        // Show Laser Logic
-        if (_isLaserActive)
-        {
-            _laserTimer -= Time.deltaTime;
+        CheckLaserEffect();
 
-            _laserLine.SetPosition(0, _muzzlePoint.position);
-            _laserLine.SetPosition(1, _laserEndPoint);
+        ApplyWeaponBob();
 
-            float t = 1f - (_laserTimer / _laserDuration); // 0 -> 1 over time
-
-            Color color = _beamColor.Evaluate(t);
-
-            _laserLine.startColor = color;
-            _laserLine.endColor = color;
-
-            if (_laserTimer <= 0f)
-            {
-                _isLaserActive = false;
-                _laserLine.enabled = false;
-            }
-        }
+        transform.localPosition = basePosition + _bobOffset;
     }
 
     protected virtual void Initialize()
@@ -212,5 +204,70 @@ public abstract class BaseWeapon : MonoBehaviour
         _currentAmmo = _data.magazineSize;
 
         _isReloading = false;
+    }
+
+    void ApplyWeaponBob()
+    {
+        float directionalInfluence = 0.0008f;
+
+        float airFactor = _player.IsGrounded ? 1f : 0.2f;
+        Vector2 flatVel = new Vector2(_player.GetRigidbody.linearVelocity.x, _player.GetRigidbody.linearVelocity.z);
+
+        float movementSpeedFactor = Mathf.Clamp01(flatVel.magnitude / _player.GetMaxBonusSpeed);
+
+        Vector3 moveDir = _player.GetMoveDir;
+
+        float speedT = Mathf.Pow(movementSpeedFactor, 0.6f);
+
+        float bobSpeed = Mathf.Lerp(_minBobSpeed, _maxBobSpeed, speedT);
+        float bobAmount = Mathf.Lerp(_minBobAmount, _maxBobAmount, Mathf.Pow(speedT, 1.2f));
+
+        float time = Time.time * bobSpeed;
+
+        // base motion
+        float x = Mathf.Sin(time) * bobAmount;
+        float y = Mathf.Cos(time * 0.5f) * bobAmount;
+
+        // subtle noise (actually used now)
+        float noise = (Mathf.PerlinNoise(time, 0f) - 0.5f);
+
+        Vector3 baseBob = new Vector3(
+            x + noise * bobAmount * 0.3f,
+            y + noise * bobAmount * 0.5f,
+            0f
+        );
+
+        Vector3 right = _player.transform.right;
+        Vector3 forward = _player.transform.forward;
+
+        Vector3 moveBob =
+            right * moveDir.x * directionalInfluence +
+            forward * moveDir.z * directionalInfluence;
+
+        _bobOffset = (baseBob + moveBob) * airFactor;
+    }
+
+    void CheckLaserEffect()
+    {
+        if (_isLaserActive)
+        {
+            _laserTimer -= Time.deltaTime;
+
+            _laserLine.SetPosition(0, _muzzlePoint.position);
+            _laserLine.SetPosition(1, _laserEndPoint);
+
+            float t = 1f - (_laserTimer / _laserDuration); // 0 -> 1 over time
+
+            Color color = _beamColor.Evaluate(t);
+
+            _laserLine.startColor = color;
+            _laserLine.endColor = color;
+
+            if (_laserTimer <= 0f)
+            {
+                _isLaserActive = false;
+                _laserLine.enabled = false;
+            }
+        }
     }
 }

@@ -12827,6 +12827,10 @@ PrefabInstance:
       propertyPath: DefaultVelocity.z
       value: 0.22
       objectReference: {fileID: 0}
+    - target: {fileID: 7625059389725706344, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8289569880567021244, guid: 797be690ae0d2024c95dd85875513f4b, type: 3}
       propertyPath: m_Name
       value: Dash Lines

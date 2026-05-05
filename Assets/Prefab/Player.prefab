@@ -6438,9 +6438,25 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8376684240342844766, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: _maxBobSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376684240342844766, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: _minBobSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376684240342844766, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
       propertyPath: _muzzlePoint
       value: 
       objectReference: {fileID: 7840328925700758684}
+    - target: {fileID: 8376684240342844766, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: _maxBobAmount
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376684240342844766, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: _minBobAmount
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8376684240342844766, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
       propertyPath: _beamColor.atime1
       value: 65150
