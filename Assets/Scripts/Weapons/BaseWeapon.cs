@@ -1,14 +1,21 @@
 using UnityEngine;
 using System.Collections;
 using Unity.Cinemachine;
+using System.Net;
 
 [RequireComponent(typeof(CinemachineImpulseSource))]
+[RequireComponent(typeof(LineRenderer))]
 public abstract class BaseWeapon : MonoBehaviour
 {
     // Weapon Variables
     [Header("Weapon Data")]
     [SerializeField] protected WeaponData _data;
     [SerializeField] protected Transform _firePoint;
+    protected LineRenderer _laserLine;
+    [SerializeField] protected ParticleSystem _muzzleFlash;
+    [SerializeField] protected Transform _muzzlePoint;
+    [SerializeField] protected float _laserDuration = 0.05f;
+    [SerializeField] private float _tracerWidth = 0.02f;
 
     public string GetFireMode { get { return _data.fireMode.ToString(); } }
 
@@ -25,9 +32,19 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected CinemachineImpulseSource _impulseSource;
 
+    // Laser Line
+    protected bool _isLaserActive;
+    protected float _laserTimer;
+    protected Vector3 _laserEndPoint;
+    [SerializeField] private Gradient _beamColor;
+
     private void Start()
     {
         _impulseSource = GetComponent<CinemachineImpulseSource>();
+        _laserLine = GetComponent<LineRenderer>();
+
+        _laserLine.startWidth = _tracerWidth;
+        _laserLine.endWidth = _tracerWidth;
     }
 
     protected virtual void Awake()
@@ -62,6 +79,29 @@ public abstract class BaseWeapon : MonoBehaviour
             _originalLocalPosition.y / parentScale.y,
             _originalLocalPosition.z / parentScale.z
         );
+
+
+        // Show Laser Logic
+        if (_isLaserActive)
+        {
+            _laserTimer -= Time.deltaTime;
+
+            _laserLine.SetPosition(0, _muzzlePoint.position);
+            _laserLine.SetPosition(1, _laserEndPoint);
+
+            float t = 1f - (_laserTimer / _laserDuration); // 0 -> 1 over time
+
+            Color color = _beamColor.Evaluate(t);
+
+            _laserLine.startColor = color;
+            _laserLine.endColor = color;
+
+            if (_laserTimer <= 0f)
+            {
+                _isLaserActive = false;
+                _laserLine.enabled = false;
+            }
+        }
     }
 
     protected virtual void Initialize()
