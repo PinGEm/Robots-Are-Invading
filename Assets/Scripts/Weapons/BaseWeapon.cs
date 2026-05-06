@@ -46,6 +46,11 @@ public abstract class BaseWeapon : MonoBehaviour
     protected Vector3 _laserEndPoint;
     [SerializeField] private Gradient _beamColor;
 
+    // Getters
+    public int GetCurrentAmmo { get { return _currentAmmo; } }
+    public int GetMaxCapacity { get { return _data.magazineSize; } }
+
+
     private void Start()
     {
         _impulseSource = GetComponent<CinemachineImpulseSource>();

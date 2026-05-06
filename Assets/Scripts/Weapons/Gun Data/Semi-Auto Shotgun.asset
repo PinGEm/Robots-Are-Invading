@@ -18,7 +18,7 @@ MonoBehaviour:
   fireRate: 1.5
   range: 60
   kickBackForce: 3
-  magazineSize: 999
+  magazineSize: 24
   reloadTime: 2
   burstCount: 3
   burstFireRate: 12

@@ -37,6 +37,8 @@ public class PlayerContext : MonoBehaviour
 
     private const float MAX_STAMINA = 100;
 
+    private const float MAX_IFRAME_TIME = 0.75f;
+
     [Header("Movement Variables")]
     [SerializeField] private int _playerMaxHP = 100;
     [SerializeField] private int _playerSpeed = 11;
@@ -92,6 +94,12 @@ public class PlayerContext : MonoBehaviour
     private float minPitch = -80f;
     private float maxPitch = 80f;
 
+    [Header("UI Components")]
+    [SerializeField] private GameObject _temporaryUI;
+    [SerializeField] private GameObject _deathMenu;
+    public GameObject GetTempUI { get { return _temporaryUI; } }
+    public GameObject GetDeathUI { get { return _deathMenu; } }
+
     [Header("Miscellaneous")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private GameObject _groundCheck;
@@ -106,6 +114,8 @@ public class PlayerContext : MonoBehaviour
     private UnityEngine.Rendering.Universal.MotionBlur _motionBlur;
 
     public UnityEngine.Rendering.Universal.MotionBlur GetMotionBlur { get { return _motionBlur; } }
+    private float _iFrameCounter = 0;
+    private bool _enableIFrame = false;
 
 
     private bool _onGround()
@@ -191,6 +201,7 @@ public class PlayerContext : MonoBehaviour
     public float GetMaxBonusSpeed { get { return MAX_BONUS_SPEED; } }
     public float GetMinBonusSpeed { get { return MIN_BONUS_SPEED; } } // here for verbose purposes and cleaner code
     public List<Tuple<float, float>> SpeedQueue;
+    public int GetCurrentPlayerHP { get { return _currentPlayerHP; } }
 
     // Dash Variables
     public bool EnableDash { get { return _enableDash; } set { _enableDash = value; } }
@@ -298,6 +309,13 @@ public class PlayerContext : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0f, _yaw, 0f);
         _cameraPoint.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
 
+        if (_enableIFrame) _iFrameCounter += Time.deltaTime;
+        if (_iFrameCounter >= MAX_IFRAME_TIME)
+        {
+            _enableIFrame = false;
+            _iFrameCounter = 0;
+        }
+
         TryClearSpeedQueue();
     }
 
@@ -343,5 +361,12 @@ public class PlayerContext : MonoBehaviour
 
             _speedQueue[i] = new Tuple<float, float>(queue.Item1, queue.Item2 - Time.deltaTime);
         }
+    }
+
+    public void DamagePlayer(int dmg)
+    {
+        if (_enableIFrame == true) return;
+        _enableIFrame = true;
+        _currentPlayerHP -= dmg;
     }
 }

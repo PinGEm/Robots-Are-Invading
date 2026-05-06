@@ -31,7 +31,8 @@ public class PlayerAliveState : BaseState
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        _ctx.GetTempUI.SetActive(false);
+        _ctx.GetDeathUI.SetActive(true);
     }
 
     public override void FixedUpdateState()
