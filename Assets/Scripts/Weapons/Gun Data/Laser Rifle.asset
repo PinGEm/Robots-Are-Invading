@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: Plasma Rifle
   fireMode: 1
   damage: 45
-  fireRate: 1
+  fireRate: 1.5
   range: 120
   kickBackForce: 0
   magazineSize: 9999

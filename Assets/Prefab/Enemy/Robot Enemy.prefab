@@ -290,9 +290,11 @@ MonoBehaviour:
   eyeHeight: 0.6
   gunBarrel: {fileID: 8028739530075830899}
   fireRate: 0.1
+  deathSoundclip: {fileID: 8300000, guid: 9a3200b94b756ac468b3a9c02c3798ac, type: 3}
+  damageSoundClip: {fileID: 8300000, guid: bdd14bb455408b14486e75db0c1ed4f0, type: 3}
+  _explosionPrefab: {fileID: 3890909032937745762, guid: 529b0d57269ba7440833e2b9726fc31d, type: 3}
   currentState: 
   maxHealth: 100
-  damageSoundClip: {fileID: 8300000, guid: bdd14bb455408b14486e75db0c1ed4f0, type: 3}
 --- !u!114 &1200988877314657027
 MonoBehaviour:
   m_ObjectHideFlags: 0

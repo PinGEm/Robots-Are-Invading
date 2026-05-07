@@ -21,10 +21,16 @@ public class Enemy : MonoBehaviour
     [Range(0.1f,10f)]
     public float fireRate;
 
+    [Header("Audio Effects")]
+    [SerializeField] private AudioClip deathSoundclip;
+    [SerializeField] private AudioClip damageSoundClip;
+
+    [Header("Miscellaneous")]
+    [SerializeField] private GameObject _explosionPrefab;
+
     [SerializeField] private string currentState; // Debugging thingy
 
     [SerializeField] private float maxHealth = 5f;
-    [SerializeField] private AudioClip damageSoundClip;
 
     private float currentHealth;
     public bool hasTakenDamage{get; set;}
@@ -62,6 +68,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        SFXManager.instance.PlaySoundFXClip(deathSoundclip, transform, 1f);
+        ObjectPoolManager.SpawnObject(_explosionPrefab, this.transform.position, this.transform.localRotation);
         Destroy(gameObject);
     }
 
