@@ -255,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6168909796531160700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8098,6 +8098,54 @@ PrefabInstance:
     - target: {fileID: 4597700811024588871, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b07c0a221e286c4588d565d8231c19c, type: 2}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.16237983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.55206555
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.3915094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.7177319
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479769641002052681, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7534295505181385288, guid: c7b9a1c785c29a344bd674d25ca77d5f, type: 3}
       propertyPath: DefaultVelocity.x
